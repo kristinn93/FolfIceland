@@ -1,0 +1,8 @@
+src.tgz
+npm-debug*
+.env
+.DS_Store
+node_modules/
+spotify_appkey.key
+cache/
+settings/

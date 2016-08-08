@@ -1,0 +1,84 @@
+{
+  "name": "spotify-voting-remote",
+  "version": "1.0.0",
+  "description": "Allows people to vote on songs in spotify. When each song finishes the song with the most votes gets played next.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "PORT=3000 TIER=development nodemon --ignore --exec node_modules/babel-cli/bin/babel-node --plugins transform-flow-strip-types -- ./index.js --hot",
+    "build": "TIER=production webpack --config server/webpack-server-babel.config.js",
+    "start": "node server/dist/server.js",
+    "test": "ava server/__tests__",
+    "flow": "flow check",
+    "lint": "node_modules/eslint/bin/eslint.js --ext \"js\" ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnarthor/spotify-voting-remote.git"
+  },
+  "author": [
+    {
+      "name": "Arnar Þór Sveinsson",
+      "email": "arnar.th92@gmail.com"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arnarthor/spotify-voting-remote/issues"
+  },
+  "homepage": "https://github.com/arnarthor/spotify-voting-remote#readme",
+  "dependencies": {
+    "immutable": "3.8.1",
+    "koa": "2.0.0",
+    "koa-body": "1.4.0",
+    "koa-convert": "1.2.0",
+    "koa-graphql-next": "1.0.1",
+    "koa-logger": "2.0.0",
+    "koa-multer": "1.0.0",
+    "koa-router": "7.0.1"
+  },
+  "devDependencies": {
+    "ava": "0.15.1",
+    "babel-cli": "6.9.0",
+    "babel-core": "6.9.1",
+    "babel-eslint": "6.0.4",
+    "babel-loader": "6.2.4",
+    "babel-plugin-syntax-flow": "6.8.0",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-plugin-transform-flow-strip-types": "6.8.0",
+    "babel-polyfill": "6.9.1",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.5.0",
+    "babel-preset-stage-0": "6.5.0",
+    "babel-register": "6.9.0",
+    "eslint": "2.11.1",
+    "eslint-config-airbnb": "9.0.1",
+    "eslint-plugin-flow-vars": "0.4.0",
+    "eslint-plugin-import": "1.8.1",
+    "eslint-plugin-jsx-a11y": "1.2.2",
+    "eslint-plugin-lodash": "1.9.1",
+    "eslint-plugin-react": "5.1.1",
+    "flow-bin": "0.26.0",
+    "iflow-koa": "1.0.34",
+    "iflow-koa-router": "1.0.18",
+    "nodemon": "1.9.2",
+    "react-scripts": "0.2.1",
+    "supertest": "1.2.0",
+    "supertest-as-promised": "3.1.0",
+    "supertest-koa-agent": "0.2.1",
+    "webpack": "1.13.1"
+  },
+  "ava": {
+    "files": [
+      "__tests__/*.js"
+    ],
+    "source": [
+      "**/*.js",
+      "!dist/**/*"
+    ],
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "babel": "inherit"
+  }
+}
