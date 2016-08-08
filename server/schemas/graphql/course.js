@@ -34,6 +34,7 @@ const basketType = new GraphQLObjectType({
   fields: {
     number: {type: GraphQLInt},
     teePads: {type: teePadsType},
+    location: {type: coordinateType},
   },
 })
 
