@@ -1,12 +1,20 @@
 {
-  "name": "folfer",
-  "version": "0.0.1",
-  "private": true,
+  "name": "folf-iceland",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start-app": "cd FolfIceland && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "react": "15.2.1",
-    "react-native": "0.31.0"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristinn93/FolfIceland.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristinn93/FolfIceland/issues"
+  },
+  "homepage": "https://github.com/kristinn93/FolfIceland#readme"
 }
