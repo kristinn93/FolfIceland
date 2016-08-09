@@ -27,6 +27,8 @@
   },
   "homepage": "https://github.com/arnarthor/spotify-voting-remote#readme",
   "dependencies": {
+    "graphql": "0.6.2",
+    "graphql-relay": "0.4.2",
     "immutable": "3.8.1",
     "koa": "2.0.0",
     "koa-body": "1.4.0",
