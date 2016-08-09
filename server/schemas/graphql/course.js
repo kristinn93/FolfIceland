@@ -1,8 +1,11 @@
 import {
   GraphQLObjectType,
   GraphQLList,
+  GraphQLString,
   GraphQLInt,
 } from 'graphql'
+
+import {getCourses, getCourse} from '../../services/courses'
 
 const coordinateType = new GraphQLObjectType({
   name: 'coordinates',
@@ -41,14 +44,24 @@ const basketType = new GraphQLObjectType({
 const courseType = new GraphQLObjectType({
   name: 'course',
   fields: {
+    name: {type: GraphQLString},
     location: {type: coordinateType},
     baskets: {type: new GraphQLList(basketType)},
   },
 })
 
+const coursesType = new GraphQLList(courseType)
+
 export default {
-  type: courseType,
-  resolve: async () => {
-    return {}
+  type: coursesType,
+  args: {
+    query: {type: GraphQLString},
+  },
+  resolve: async (_, args) => {
+    console.log(args)
+    if (args.query) {
+      return getCourse(args.query)
+    }
+    return getCourses()
   },
 }
