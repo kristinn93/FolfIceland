@@ -102,7 +102,7 @@ module.exports = {
     'react/prefer-stateless-function': 0,
     'react/prefer-stateless-function': 0, // Turn off until we can hotreload stateless components
     'react/prop-types': 0, // Flow does this for us
-    'react/react-in-jsx-scope': 2,
+    'react/react-in-jsx-scope': 0,
     'react/self-closing-comp': 1,
     'react/sort-comp': 0, // We use different ordering inside components
     'react/wrap-multilines': 1,

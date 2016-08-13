@@ -4,8 +4,7 @@ import {
   GraphQLString,
   GraphQLInt,
 } from 'graphql'
-
-import {getCourses, getCourse} from '../../services/courses'
+import {getCourses} from '../../services/courses'
 
 const coordinateType = new GraphQLObjectType({
   name: 'coordinates',
@@ -51,17 +50,28 @@ const courseType = new GraphQLObjectType({
 })
 
 const coursesType = new GraphQLList(courseType)
+const folfType = new GraphQLObjectType({
+  name: 'Folf',
+  fields: {
+    courses: {
+      type: coursesType,
+      args: {
+        query: {type: GraphQLString},
+      },
+      resolve: (_: any, args: {query: string}) => {
+        const courses = getCourses(args.query)
+        console.log(courses)
+        return courses
+      },
+    },
+  },
+})
 
 export default {
-  type: coursesType,
-  args: {
-    query: {type: GraphQLString},
-  },
-  resolve: async (_, args) => {
-    console.log(args)
-    if (args.query) {
-      return getCourse(args.query)
+  type: folfType,
+  resolve: () => {
+    return {
+      courses: [],
     }
-    return getCourses()
   },
 }

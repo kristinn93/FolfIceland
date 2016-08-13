@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import {Map, List} from 'immutable'
 import type {Course} from '../schemas/flow/course'
 
@@ -93,16 +94,11 @@ const courses: Map<string, Course> = Map({
   }),
 })
 
-export const getCourses = (): Array<{[key: string]: Course}> => {
-  const coursesList = courses.map((v, k) => {
+export const getCourses = (query: string): Array<{[key: string]: Course}> => {
+  const coursesList = courses.filter(
+    (v: Map<string, any>, k: string): boolean => _.includes(k.toLowerCase(), query.toLowerCase())
+  ).map((v: Map<string, any>, k) => {
     return v.set('name', k)
   })
   return coursesList.toList().toJS()
-}
-
-export const getCourse = (course): Array<Course> => {
-  if (courses.has(course)) {
-    return [courses.get(course).set('name', course).toJS()]
-  }
-  return []
 }

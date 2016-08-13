@@ -4,13 +4,10 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, {Component} from 'react'
+import {AppRegistry, StyleSheet, Text, View} from 'react-native'
+import setupRelay from './src/utils/relay'
+
 
 class FolfIceland extends Component {
   render() {
@@ -27,7 +24,7 @@ class FolfIceland extends Component {
           Shake or press menu button for dev menu
         </Text>
       </View>
-    );
+    )
   }
 }
 
@@ -48,6 +45,7 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-});
+})
 
-AppRegistry.registerComponent('FolfIceland', () => FolfIceland);
+setupRelay()
+AppRegistry.registerComponent('FolfIceland', () => FolfIceland)

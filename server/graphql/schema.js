@@ -3,14 +3,14 @@ import {
   GraphQLSchema,
 } from 'graphql'
 
-import courses from '../schemas/graphql/course'
+import folf from '../schemas/graphql/course'
 
 export default () => {
   const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
       name: 'FolfIceland',
       fields: {
-        courses,
+        folf,
       },
     }),
   })
