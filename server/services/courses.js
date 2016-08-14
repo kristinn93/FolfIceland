@@ -102,3 +102,7 @@ export const getCourses = (query: string): Array<{[key: string]: Course}> => {
   })
   return coursesList.toList().toJS()
 }
+
+export const getCourse = (course: String): Course => {
+  return courses.get(course) && courses.get(course).set('name', course).toJS()
+}

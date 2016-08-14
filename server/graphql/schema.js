@@ -3,7 +3,7 @@ import {
   GraphQLSchema,
 } from 'graphql'
 
-import folf from '../schemas/graphql/course'
+import {folf, course} from '../schemas/graphql/course'
 
 export default () => {
   const schema = new GraphQLSchema({
@@ -11,6 +11,7 @@ export default () => {
       name: 'FolfIceland',
       fields: {
         folf,
+        course,
       },
     }),
   })

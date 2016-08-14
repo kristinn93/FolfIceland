@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native'
+import {Actions} from 'react-native-router-flux'
 import Relay from 'react-relay'
 
 import type {Course} from '../../../server/schemas/flow/course'
@@ -42,7 +43,7 @@ class CourseList extends Component<void, Props, void> {
     return (
       <TouchableHighlight
         onPress={() => {
-          this._pressRow(rowID)
+          Actions.course()
           highlightRow(sectionID, rowID)
         }}
       >
@@ -55,10 +56,6 @@ class CourseList extends Component<void, Props, void> {
         </View>
       </TouchableHighlight>
     )
-  }
-
-  _pressRow(rowID: number) {
-
   }
 
   _renderSeparator(sectionID: number, rowID: number, adjacentRowHighlighted: bool) {

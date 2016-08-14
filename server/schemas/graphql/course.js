@@ -4,10 +4,10 @@ import {
   GraphQLString,
   GraphQLInt,
 } from 'graphql'
-import {getCourses} from '../../services/courses'
+import {getCourse, getCourses} from '../../services/courses'
 
 const coordinateType = new GraphQLObjectType({
-  name: 'coordinates',
+  name: 'Coordinates',
   fields: {
     lat: {type: GraphQLInt},
     long: {type: GraphQLInt},
@@ -15,7 +15,7 @@ const coordinateType = new GraphQLObjectType({
 })
 
 const teePadType = new GraphQLObjectType({
-  name: 'teePad',
+  name: 'TeePad',
   fields: {
     par: {type: GraphQLInt},
     location: {type: coordinateType},
@@ -23,7 +23,7 @@ const teePadType = new GraphQLObjectType({
 })
 
 const teePadsType = new GraphQLObjectType({
-  name: 'teePads',
+  name: 'TeePads',
   fields: {
     red: {type: teePadType},
     white: {type: teePadType},
@@ -32,7 +32,7 @@ const teePadsType = new GraphQLObjectType({
 })
 
 const basketType = new GraphQLObjectType({
-  name: 'basket',
+  name: 'Basket',
   fields: {
     number: {type: GraphQLInt},
     teePads: {type: teePadsType},
@@ -41,7 +41,7 @@ const basketType = new GraphQLObjectType({
 })
 
 const courseType = new GraphQLObjectType({
-  name: 'course',
+  name: 'Course',
   fields: {
     name: {type: GraphQLString},
     location: {type: coordinateType},
@@ -59,19 +59,28 @@ const folfType = new GraphQLObjectType({
         query: {type: GraphQLString},
       },
       resolve: (_: any, args: {query: string}) => {
-        const courses = getCourses(args.query)
-        console.log(courses)
-        return courses
+        return getCourses(args.query)
       },
     },
   },
 })
 
-export default {
+export const folf = {
   type: folfType,
   resolve: () => {
     return {
       courses: [],
     }
+  },
+}
+
+export const course = {
+  type: courseType,
+  args: {
+    name: {type: GraphQLString},
+  },
+  resolve: (_: any, args: {name: string}) => {
+    console.log(args)
+    return getCourse(args.name)
   },
 }
