@@ -1,16 +1,17 @@
 import {
-  GraphQLObjectType,
-  GraphQLList,
-  GraphQLString,
+  GraphQLFloat,
   GraphQLInt,
+  GraphQLList,
+  GraphQLObjectType,
+  GraphQLString,
 } from 'graphql'
 import {getCourse, getCourses} from '../../services/courses'
 
 const coordinateType = new GraphQLObjectType({
   name: 'Coordinates',
   fields: {
-    lat: {type: GraphQLInt},
-    long: {type: GraphQLInt},
+    lat: {type: GraphQLFloat},
+    long: {type: GraphQLFloat},
   },
 })
 
