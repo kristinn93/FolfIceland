@@ -8,12 +8,13 @@ import CourseRoute from '../routes/Course'
 
 export default class CourseContainer extends Component {
   render() {
+    const {navigationState} = this.props
     return (
       <View style={styles.container}>
         <RootContainer
           Component={CourseDetails}
-          route={new CourseRoute({query: 'klambratun'})}
-          renderFetched={(data) => <CourseDetails query={"klambratun"}{...this.props} {...data} />}
+          route={new CourseRoute({query: navigationState.query})}
+          renderFetched={(data) => <CourseDetails query={navigationState.query}{...this.props} {...data} />}
         />
       </View>
     )

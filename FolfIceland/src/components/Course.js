@@ -4,6 +4,7 @@ import {
   MapView,
   StyleSheet,
   Text,
+  TouchableHighlight,
   View,
 } from 'react-native'
 import Relay from 'react-relay'
@@ -25,41 +26,91 @@ class CourseDetails extends Component<void, Props, void> {
       longitudeDelta: 0.01,
     }
     return (
-      <View>
+      <View style={styles.container}>
         <MapView
           style={styles.map}
           region={mapRegion}
           annotations={[{latitude: course.location.lat, longitude: course.location.long}]}
           showsUserLocation
         />
-        <Text>Name: {course.name}</Text>
+        <View style={styles.info}>
+          <Text style={styles.name}>{course.name}</Text>
+          <Text style={styles.metadata}>{course.city}</Text>
+          <Text style={styles.metadata}>Number of baskets:
+            <Text style={styles.metadataAttribute}> {course.numberOfBaskets}</Text>
+          </Text>
+          <Text style={styles.par}>Par</Text>
+          {course.par.red &&
+            <Text style={styles.metadata}>Red:
+              <Text style={styles.metadataAttribute}> {course.par.red}</Text>
+            </Text>
+          }
+          {course.par.white &&
+            <Text style={styles.metadata}>Red:
+              <Text style={styles.metadataAttribute}> {course.par.white}</Text>
+            </Text>
+          }
+          {course.par.blue &&
+            <Text style={styles.metadata}>Red:
+              <Text style={styles.metadataAttribute}> {course.par.blue}</Text>
+            </Text>
+          }
+        </View>
+        <TouchableHighlight onPress={() => {}}>
+          <Text style={styles.button} >Play this course</Text>
+        </TouchableHighlight>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FBFBFF',
+    flex: 1,
+    alignItems: 'stretch',
+    flexDirection: 'column',
+  },
   map: {
-    height: 450,
-    margin: 10,
-    borderWidth: 1,
-    borderColor: '#000000',
+    flex: 1,
+  },
+  info: {
+    marginLeft: 10,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  name: {
+    fontSize: 24,
+  },
+  metadata: {
+    fontSize: 14,
+  },
+  metadataAttribute: {
+    fontWeight: 'bold',
+  },
+  par: {
+    fontSize: 18,
+  },
+  button: {
+    color: '#FBFBFF',
+    backgroundColor: '#01BAEF',
+    padding: 10,
+    fontSize: 24,
+    textAlign: 'center',
+    alignSelf: 'stretch',
+    flex: 3,
   },
 })
 
 export default Relay.createContainer(CourseDetails, {
-  initialVariables: {
-    query: '',
-  },
-
   fragments: {
     course: () => Relay.QL`
       fragment on Course {
         name
-        location {
-          lat
-          long
-        }
+        city
+        numberOfBaskets
+        location {lat long}
+        par {red white blue}
       }
     `,
   },

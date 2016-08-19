@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import {
   GraphQLFloat,
   GraphQLInt,
@@ -41,10 +42,45 @@ const basketType = new GraphQLObjectType({
   },
 })
 
+const parType = new GraphQLObjectType({
+  name: 'Par',
+  fields: {
+    red: {type: GraphQLInt},
+    white: {type: GraphQLInt},
+    blue: {type: GraphQLInt},
+  },
+})
+
 const courseType = new GraphQLObjectType({
   name: 'Course',
   fields: {
     name: {type: GraphQLString},
+    city: {type: GraphQLString},
+    numberOfBaskets: {
+      type: GraphQLInt,
+      resolve: (course) => {
+        return course.baskets.length
+      },
+    },
+    par: {
+      type: parType,
+      resolve: (course) => {
+        return {
+          red: _.sum(_.flattenDeep(course.baskets.map((basket) => {
+            const redTeePad = basket.teePads.red
+            return redTeePad && redTeePad.par
+          }))),
+          white: _.sum(_.flattenDeep(course.baskets.map((basket) => {
+            const whiteTeePad = basket.teePads.white
+            return whiteTeePad && whiteTeePad.par
+          }))),
+          blue: _.sum(_.flattenDeep(course.baskets.map((basket) => {
+            const blueTeePad = basket.teePads.blue
+            return blueTeePad && blueTeePad.par
+          }))),
+        }
+      },
+    },
     location: {type: coordinateType},
     baskets: {type: new GraphQLList(basketType)},
   },
@@ -81,7 +117,6 @@ export const course = {
     name: {type: GraphQLString},
   },
   resolve: (_: any, args: {name: string}) => {
-    console.log(args)
     return getCourse(args.name)
   },
 }

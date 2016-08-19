@@ -43,7 +43,7 @@ class CourseList extends Component<void, Props, void> {
     return (
       <TouchableHighlight
         onPress={() => {
-          Actions.course()
+          Actions.course({query: rowData.name})
           highlightRow(sectionID, rowID)
         }}
       >

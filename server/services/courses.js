@@ -3,7 +3,8 @@ import {Map, List} from 'immutable'
 import type {Course} from '../schemas/flow/course'
 
 const courses: Map<string, Course> = Map({
-  klambratun: Map({
+  klambratún: Map({
+    city: 'Reykjavík',
     location: Map({
       lat: 64.138409,
       long: -21.915763,
@@ -98,11 +99,12 @@ export const getCourses = (query: string): Array<{[key: string]: Course}> => {
   const coursesList = courses.filter(
     (v: Map<string, any>, k: string): boolean => _.includes(k.toLowerCase(), query.toLowerCase())
   ).map((v: Map<string, any>, k) => {
-    return v.set('name', k)
+    return v.set('name', _.capitalize(k))
   })
   return coursesList.toList().toJS()
 }
 
 export const getCourse = (course: String): Course => {
-  return courses.get(course) && courses.get(course).set('name', course).toJS()
+  return courses.get(course.toLowerCase()) &&
+    courses.get(course.toLowerCase()).set('name', _.capitalize(course)).toJS()
 }
