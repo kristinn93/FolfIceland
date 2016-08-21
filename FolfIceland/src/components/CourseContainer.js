@@ -9,7 +9,6 @@ import CourseRoute from '../routes/Course'
 export default class CourseContainer extends Component {
   render() {
     const {navigationState} = this.props
-    console.log(navigationState.query)
     return (
       <View style={styles.container}>
         <RootContainer

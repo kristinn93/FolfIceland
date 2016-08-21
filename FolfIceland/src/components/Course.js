@@ -25,6 +25,7 @@ class CourseDetails extends Component<void, Props, void> {
       latitudeDelta: 0.01,
       longitudeDelta: 0.01,
     }
+    console.log(JSON.stringify(course, null, 2))
     return (
       <View style={styles.container}>
         <MapView
@@ -39,19 +40,19 @@ class CourseDetails extends Component<void, Props, void> {
           <Text style={styles.metadata}>Number of baskets:
             <Text style={styles.metadataAttribute}> {course.numberOfBaskets}</Text>
           </Text>
-          <Text style={styles.par}>Par</Text>
-          {course.par.red &&
+          {course.numberOfBaskets !== 0 && <Text style={styles.par}>Par</Text>}
+          {course.par.red !== 0 &&
             <Text style={styles.metadata}>Red:
               <Text style={styles.metadataAttribute}> {course.par.red}</Text>
             </Text>
           }
-          {course.par.white &&
-            <Text style={styles.metadata}>Red:
+          {course.par.white !== 0 &&
+            <Text style={styles.metadata}>White:
               <Text style={styles.metadataAttribute}> {course.par.white}</Text>
             </Text>
           }
-          {course.par.blue &&
-            <Text style={styles.metadata}>Red:
+          {course.par.blue !== 0 &&
+            <Text style={styles.metadata}>Blue:
               <Text style={styles.metadataAttribute}> {course.par.blue}</Text>
             </Text>
           }

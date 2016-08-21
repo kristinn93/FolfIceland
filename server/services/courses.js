@@ -10,6 +10,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Eiðsvöllur: {
     name: 'Eiðsvöllur',
@@ -18,6 +19,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Glerárskóli: {
     name: 'Glerárskóli',
@@ -26,6 +28,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Hamrakotstún: {
     name: 'Hamrakotstún',
@@ -34,6 +37,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Hamrar: {
     name: 'Hamrar',
@@ -42,6 +46,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Apavatn: {
     name: 'Apavatn',
@@ -50,6 +55,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Bifröst: {
     name: 'Bifröst',
@@ -58,6 +64,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Bolungarvík: {
     name: 'Bolungarvík',
@@ -66,6 +73,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Tjarnargarðurinn: {
     name: 'Tjarnargarðurinn',
@@ -74,6 +82,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Flateyri: {
     name: 'Flateyri',
@@ -82,6 +91,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Flúðir: {
     name: 'Flúðir',
@@ -90,6 +100,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Víðistaðatún: {
     name: 'Víðistaðatún',
@@ -98,6 +109,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Hrísey: {
     name: 'Hrísey',
@@ -106,6 +118,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Miðhúsaskógur: {
     name: 'Miðhúsaskógur',
@@ -114,6 +127,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Ævintýragarðurinn: {
     name: 'Ævintýragarðurinn',
@@ -122,6 +136,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Neskaupsstaður: {
     name: 'Neskaupsstaður',
@@ -130,6 +145,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Rómantískasvæðið: {
     name: 'Rómantískasvæðið',
@@ -138,6 +154,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   'Fella- og Hólahverfi': {
     name: 'Fella- og Hólahverfi',
@@ -146,6 +163,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Fossvogsdalur: {
     name: 'Fossvogsdalur',
@@ -154,6 +172,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Gufunes: {
     name: 'Gufunes',
@@ -162,6 +181,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Laugardalur: {
     name: 'Laugardalur',
@@ -170,6 +190,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Seljahverfi: {
     name: 'Seljahverfi',
@@ -178,6 +199,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Valhúsahæð: {
     name: 'Valhúsahæð',
@@ -186,6 +208,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Úlfljótsvatn: {
     name: 'Úlfljótsvatn',
@@ -194,6 +217,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Vestmannaeyjar: {
     name: 'Vestmannaeyjar',
@@ -202,6 +226,7 @@ const courses: Map<string, Course> = fromJS({
       lat: 64.138409,
       long: -21.915763,
     },
+    baskets: [],
   },
   Klambratún: {
     name: 'Klambratún',
