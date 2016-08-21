@@ -41,17 +41,17 @@ class CourseDetails extends Component<void, Props, void> {
             <Text style={styles.metadataAttribute}> {course.numberOfBaskets}</Text>
           </Text>
           {course.numberOfBaskets !== 0 && <Text style={styles.par}>Par</Text>}
-          {course.par.red !== 0 &&
+          {course.par.red && course.par.red !== 0 &&
             <Text style={styles.metadata}>Red:
               <Text style={styles.metadataAttribute}> {course.par.red}</Text>
             </Text>
           }
-          {course.par.white !== 0 &&
+          {course.par.white && course.par.white !== 0 &&
             <Text style={styles.metadata}>White:
               <Text style={styles.metadataAttribute}> {course.par.white}</Text>
             </Text>
           }
-          {course.par.blue !== 0 &&
+          {course.par.blue && course.par.blue !== 0 &&
             <Text style={styles.metadata}>Blue:
               <Text style={styles.metadataAttribute}> {course.par.blue}</Text>
             </Text>
