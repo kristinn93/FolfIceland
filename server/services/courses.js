@@ -7,10 +7,218 @@ const courses: Map<string, Course> = fromJS({
     name: 'Garðalundur',
     city: 'Akranes',
     location: {
-      lat: 64.138409,
-      long: -21.915763,
+      lat: 64.321683,
+      long: -22.037017,
     },
-    baskets: [],
+    baskets: [
+      {
+        number: 1,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.322712,
+              long: -22.033293,
+            },
+          },
+          white: {
+            par: 3,
+            location: {
+              lat: 64.322283,
+              long: -22.033529,
+            },
+          },
+        },
+        location: {
+          lat: 64.322534,
+          long: -22.032999,
+        },
+      },
+      {
+        number: 2,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.322392,
+              long: -22.032142,
+            },
+          },
+          white: {
+            par: 3,
+            location: {
+              lat: 64.322523,
+              long: -22.032344,
+            },
+          },
+        },
+        location: {
+          lat: 64.322237,
+          long: -22.03287,
+        },
+      },
+      {
+        number: 3,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.322742,
+              long: -22.031178,
+            },
+          },
+          white: {
+            par: 3,
+            location: {
+              lat: 64.322609,
+              long: -22.031348,
+            },
+          },
+        },
+        location: {
+          lat: 64.322903,
+          long: -22.030806,
+        },
+      },
+      {
+        number: 4,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.323534,
+              long: -22.031352,
+            },
+          },
+          white: {
+            par: 3,
+            location: {
+              lat: 64.323450,
+              long: -22.031098,
+            },
+          },
+        },
+        location: {
+          lat: 64.323540,
+          long: -22.031732,
+        },
+      },
+      {
+        number: 5,
+        teePads: {
+          red: {
+            par: 4,
+            location: {
+              lat: 64.323281,
+              long: -22.032141,
+            },
+          },
+          white: {
+            par: 4,
+            location: {
+              lat: 64.323281,
+              long: -22.032141,
+            },
+          },
+        },
+        location: {
+          lat: 64.322996,
+          long: -22.032909,
+        },
+      },
+      {
+        number: 6,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.322801,
+              long: -22.032174,
+            },
+          },
+          white: {
+            par: 3,
+            location: {
+              lat: 64.322715,
+              long: -22.031855,
+            },
+          },
+        },
+        location: {
+          lat: 64.322762,
+          long: -22.032950,
+        },
+      },
+      {
+        number: 7,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.323109,
+              long: -22.032631,
+            },
+          },
+          white: {
+            par: 3,
+            location: {
+              lat: 64.323005,
+              long: -22.032451,
+            },
+          },
+        },
+        location: {
+          lat: 64.323395,
+          long: -22.033025,
+        },
+      },
+      {
+        number: 8,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.323789,
+              long: -22.033412,
+            },
+          },
+          white: {
+            par: 4,
+            location: {
+              lat: 64.323492,
+              long: -22.033598,
+            },
+          },
+        },
+        location: {
+          lat: 64.323740,
+          long: -22.032954,
+        },
+      },
+      {
+        number: 9,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.323417,
+              long: -22.034326,
+            },
+          },
+          white: {
+            par: 3,
+            location: {
+              lat: 64.323572,
+              long: -22.033908,
+            },
+          },
+        },
+        location: {
+          lat: 64.323033,
+          long: -22.034356,
+        },
+      },
+    ],
   },
   Eiðsvöllur: {
     name: 'Eiðsvöllur',
