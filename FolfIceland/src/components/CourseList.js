@@ -23,9 +23,6 @@ class CourseList extends Component<void, Props, void> {
   render() {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     const {courses} = this.props.courses
-    for (let i = 0; i < 10; i++) {
-      courses.push(courses[0])
-    }
     return (
       <ListView
         dataSource={ds.cloneWithRows(courses)}
@@ -49,9 +46,8 @@ class CourseList extends Component<void, Props, void> {
       >
         <View>
           <View style={styles.row}>
-            <Text style={styles.text}>
-              {rowData.name}
-            </Text>
+            <Text style={styles.text}>{rowData.name}</Text>
+            <Text style={styles.subText}>{rowData.city}</Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -73,13 +69,20 @@ class CourseList extends Component<void, Props, void> {
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: 'column',
     padding: 10,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: '#FBFBFF',
   },
   text: {
     flex: 1,
+    padding: 2,
+    fontSize: 15,
+  },
+  subText: {
+    color: '#757575',
+    padding: 2,
+    flex: 1,
+    fontSize: 12,
   },
 })
 
@@ -87,8 +90,9 @@ export default Relay.createContainer(CourseList, {
   fragments: {
     courses: () => Relay.QL`
       fragment on Folf {
-        courses(query: "") {
+        courses {
           name
+          city
         }
       }
     `,

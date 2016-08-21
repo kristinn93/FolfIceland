@@ -1,107 +1,206 @@
 import _ from 'lodash'
-import {Map, List} from 'immutable'
+import {Map, fromJS} from 'immutable'
 import type {Course} from '../schemas/flow/course'
 
-const courses: Map<string, Course> = Map({
-  klambratún: Map({
+const courses: Map<string, Course> = fromJS({
+  Garðalundur: {
+    name: 'Garðalundur',
+    city: 'Akranes',
+  },
+  Eiðsvöllur: {
+    name: 'Eiðsvöllur',
+    city: 'Akureyri',
+  },
+  Glerárskóli: {
+    name: 'Glerárskóli',
+    city: 'Akureyri',
+  },
+  Hamrakotstún: {
+    name: 'Hamrakotstún',
+    city: 'Akureyri',
+  },
+  Hamrar: {
+    name: 'Hamrar',
+    city: 'Akureyri',
+  },
+  Apavatn: {
+    name: 'Apavatn',
+    city: 'Laugarvatn',
+  },
+  Bifröst: {
+    name: 'Bifröst',
+    city: 'Bifröst',
+  },
+  Bolungarvík: {
+    name: 'Bolungarvík',
+    city: 'Bolungarvík',
+  },
+  Tjarnargarðurinn: {
+    name: 'Tjarnargarðurinn',
+    city: 'Egilsstaðir',
+  },
+  Flateyri: {
+    name: 'Flateyri',
+    city: 'Flateyri',
+  },
+  Flúðir: {
+    name: 'Flúðir',
+    city: 'Flúðir',
+  },
+  Víðistaðatún: {
+    name: 'Víðistaðatún',
+    city: 'Hafnafjörður',
+  },
+  Hrísey: {
+    name: 'Hrísey',
+    city: 'Hrísey',
+  },
+  Miðhúsaskógur: {
+    name: 'Miðhúsaskógur',
+    city: 'Laugarvatn',
+  },
+  Ævintýragarðurinn: {
+    name: 'Ævintýragarðurinn',
+    city: 'Mosfellsbær',
+  },
+  Neskaupsstaður: {
+    name: 'Neskaupsstaður',
+    city: 'Neskaupsstaður',
+  },
+  Rómantískasvæðið: {
+    name: 'Rómantískasvæðið',
+    city: 'Reykjanesbær',
+  },
+  'Fella- og Hólahverfi': {
+    name: 'Fella- og Hólahverfi',
+    city: 'Breiðholt',
+  },
+  Fossvogsdalur: {
+    name: 'Fossvogsdalur',
     city: 'Reykjavík',
-    location: Map({
+  },
+  Gufunes: {
+    name: 'Gufunes',
+    city: 'Grafarvogur',
+  },
+  Laugardalur: {
+    name: 'Laugardalur',
+    city: 'Reykjavík',
+  },
+  Seljahverfi: {
+    name: 'Seljahverfi',
+    city: 'Breiðholt',
+  },
+  Valhúsahæð: {
+    name: 'Valhúsahæð',
+    city: 'Seltjarnarnes',
+  },
+  Úlfljótsvatn: {
+    name: 'Úlfljótsvatn',
+    city: 'Úlfljótsvatn',
+  },
+  Vestmannaeyjar: {
+    name: 'Vestmannaeyjar',
+    city: 'Vestmannaeyjar',
+  },
+  Klambratún: {
+    name: 'Klambratún',
+    city: 'Reykjavík',
+    location: {
       lat: 64.138409,
       long: -21.915763,
-    }),
-    baskets: List([
-      Map({
+    },
+    baskets: [
+      {
         number: 1,
-        teePads: Map({
-          red: Map({
+        teePads: {
+          red: {
             par: 3,
             location: null,
-          }),
-        }),
-      }),
-      Map({
+          },
+        },
+      },
+      {
         number: 2,
-        teePads: Map({
-          red: Map({
+        teePads: {
+          red: {
             par: 3,
             location: null,
-          }),
-        }),
-      }),
-      Map({
+          },
+        },
+      },
+      {
         number: 3,
-        teePads: Map({
-          red: Map({
+        teePads: {
+          red: {
             par: 4,
             location: null,
-          }),
-        }),
-      }),
-      Map({
+          },
+        },
+      },
+      {
         number: 4,
-        teePads: Map({
-          red: Map({
+        teePads: {
+          red: {
             par: 3,
             location: null,
-          }),
-        }),
-      }),
-      Map({
+          },
+        },
+      },
+      {
         number: 5,
-        teePads: Map({
-          red: Map({
+        teePads: {
+          red: {
             par: 4,
             location: null,
-          }),
-        }),
-      }),
-      Map({
+          },
+        },
+      },
+      {
         number: 6,
-        teePads: Map({
-          red: Map({
+        teePads: {
+          red: {
             par: 5,
             location: null,
-          }),
-        }),
-      }),
-      Map({
+          },
+        },
+      },
+      {
         number: 7,
-        teePads: Map({
-          red: Map({
+        teePads: {
+          red: {
             par: 4,
             location: null,
-          }),
-        }),
-      }),
-      Map({
+          },
+        },
+      },
+      {
         number: 8,
-        teePads: Map({
-          red: Map({
+        teePads: {
+          red: {
             par: 3,
             location: null,
-          }),
-        }),
-      }),
-      Map({
+          },
+        },
+      },
+      {
         number: 9,
-        teePads: Map({
-          red: Map({
+        teePads: {
+          red: {
             par: 4,
             location: null,
-          }),
-        }),
-      }),
-    ]),
-  }),
+          },
+        },
+      },
+    ],
+  },
 })
 
-export const getCourses = (query: string): Array<{[key: string]: Course}> => {
-  const coursesList = courses.filter(
-    (v: Map<string, any>, k: string): boolean => _.includes(k.toLowerCase(), query.toLowerCase())
-  ).map((v: Map<string, any>, k) => {
+export const getCourses = (): Array<{[key: string]: Course}> => {
+  const coursesList = courses.map((v: Map<string, any>, k) => {
     return v.set('name', _.capitalize(k))
   })
-  return coursesList.toList().toJS()
+  return coursesList.toList().sortBy((v) => v.get('city')).toJS()
 }
 
 export const getCourse = (course: String): Course => {

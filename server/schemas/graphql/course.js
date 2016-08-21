@@ -90,15 +90,7 @@ const coursesType = new GraphQLList(courseType)
 const folfType = new GraphQLObjectType({
   name: 'Folf',
   fields: {
-    courses: {
-      type: coursesType,
-      args: {
-        query: {type: GraphQLString},
-      },
-      resolve: (_: any, args: {query: string}) => {
-        return getCourses(args.query)
-      },
-    },
+    courses: {type: coursesType},
   },
 })
 
@@ -106,7 +98,7 @@ export const folf = {
   type: folfType,
   resolve: () => {
     return {
-      courses: [],
+      courses: getCourses(),
     }
   },
 }
@@ -116,7 +108,7 @@ export const course = {
   args: {
     name: {type: GraphQLString},
   },
-  resolve: (_: any, args: {name: string}) => {
+  resolve: (__: any, args: {name: string}) => {
     return getCourse(args.name)
   },
 }

@@ -9,7 +9,8 @@
     "start": "node server/dist/server.js",
     "test": "ava server/__tests__",
     "flow": "flow check",
-    "lint": "node_modules/eslint/bin/eslint.js --ext \"js\" ."
+    "lint": "node_modules/eslint/bin/eslint.js --ext \"js\" .",
+    "scrape": "node node_modules/babel-cli/bin/babel-node utils/courseScraper.js"
   },
   "repository": {
     "type": "git",
@@ -63,6 +64,7 @@
     "iflow-koa": "1.0.34",
     "iflow-koa-router": "1.0.18",
     "nodemon": "1.9.2",
+    "noodlejs": "0.3.2",
     "react-scripts": "0.2.1",
     "supertest": "1.2.0",
     "supertest-as-promised": "3.1.0",
