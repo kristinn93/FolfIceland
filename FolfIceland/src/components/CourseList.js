@@ -7,9 +7,11 @@ import {
   Text,
   TouchableHighlight,
   View,
+  Navigator,
 } from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import Relay from 'react-relay'
+
 
 import type {Course} from '../../../server/schemas/flow/course'
 type Props = {
@@ -20,13 +22,23 @@ class CourseList extends Component<void, Props, void> {
 
   props: Props
 
+  // constructor() {
+  //   super()
+  //   this.logCourse = this.logCourse.bind(this)
+  // }
+
+  logCourse(data) {
+    console.log(data)
+    Actions.logCourse(data)
+  }
+
   render() {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
     const {courses} = this.props.courses
     return (
       <ListView
         dataSource={ds.cloneWithRows(courses)}
-        renderRow={this._renderRow}
+        renderRow={this._renderRow.bind(this)}
         renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
         renderSeparator={this._renderSeparator}
       />
@@ -35,8 +47,13 @@ class CourseList extends Component<void, Props, void> {
 
   _renderRow(
     rowData: Course, sectionID: number, rowID: number,
-    highlightRow: (sectionID: number, rowID: number) => void
+    highlightRow: (sectionID: number, rowID: number) => void,
   ) {
+    // const logCourse = (data) => {
+    //   console.log(data)
+    //   this.props.navigator.push({id: 'logCourse'})
+    // }
+    const logPressDelay = 20000
     return (
       <TouchableHighlight
         onPress={() => {
@@ -48,6 +65,14 @@ class CourseList extends Component<void, Props, void> {
           <View style={styles.row}>
             <Text style={styles.text}>{rowData.name}</Text>
             <Text style={styles.subText}>{rowData.city}</Text>
+            <TouchableHighlight
+              style={styles.log}
+              onPress={() => {
+                this.logCourse(rowData)
+              }}
+            >
+              <Text>Log Course</Text>
+            </TouchableHighlight>
           </View>
         </View>
       </TouchableHighlight>
@@ -83,6 +108,9 @@ const styles = StyleSheet.create({
     padding: 2,
     flex: 1,
     fontSize: 12,
+  },
+  log: {
+    alignSelf: 'flex-end',
   },
 })
 
