@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {StyleSheet, View} from 'react-native'
 import {RootContainer} from 'react-relay'
 
-import CourseDetails from './Course'
+import CourseDetails from './CourseDetails'
 import CourseRoute from '../routes/Course'
 
 export default class CourseContainer extends Component {
@@ -14,7 +14,7 @@ export default class CourseContainer extends Component {
         <RootContainer
           Component={CourseDetails}
           route={new CourseRoute({query: navigationState.query})}
-          renderFetched={(data) => <CourseDetails query={navigationState.query}{...this.props} {...data} />}
+          renderFetched={(data) => <CourseDetails {...this.props} {...data} />}
         />
       </View>
     )

@@ -7,7 +7,6 @@ import {
   Text,
   TouchableHighlight,
   View,
-  Navigator,
 } from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import Relay from 'react-relay'

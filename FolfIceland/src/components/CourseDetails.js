@@ -6,6 +6,7 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native'
+import {Actions} from 'react-native-router-flux'
 import MapView from 'react-native-maps'
 import Relay from 'react-relay'
 
@@ -59,7 +60,7 @@ class CourseDetails extends Component<void, Props, void> {
             </Text>
           }
         </View>
-        <TouchableHighlight onPress={() => {}}>
+        <TouchableHighlight onPress={() => Actions.courseMap({query: course.name})}>
           <Text style={styles.button} >Play this course</Text>
         </TouchableHighlight>
       </View>

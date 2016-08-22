@@ -24,7 +24,7 @@ const courses: Map<string, Course> = fromJS({
           white: {
             par: 3,
             location: {
-              lat: 64.322283,
+              lat: 64.322833,
               long: -22.033529,
             },
           },
@@ -54,7 +54,7 @@ const courses: Map<string, Course> = fromJS({
         },
         location: {
           lat: 64.322237,
-          long: -22.03287,
+          long: -22.032087,
         },
       },
       {
@@ -116,14 +116,14 @@ const courses: Map<string, Course> = fromJS({
           white: {
             par: 4,
             location: {
-              lat: 64.323281,
-              long: -22.032141,
+              lat: 64.323602,
+              long: -22.032039,
             },
           },
         },
         location: {
-          lat: 64.322996,
-          long: -22.032909,
+          lat: 64.322914,
+          long: -22.032441,
         },
       },
       {
@@ -449,8 +449,15 @@ const courses: Map<string, Course> = fromJS({
         teePads: {
           red: {
             par: 3,
-            location: null,
+            location: {
+              lat: 64.1383651039229,
+              long: -21.9153169915284,
+            },
           },
+        },
+        location: {
+          lat: 64.1379321786241,
+          long: -21.9160319678689,
         },
       },
       {
@@ -458,8 +465,15 @@ const courses: Map<string, Course> = fromJS({
         teePads: {
           red: {
             par: 3,
-            location: null,
+            location: {
+              lat: 64.1380611761139,
+              long: -21.9163826666976,
+            },
           },
+        },
+        location: {
+          lat: 64.1375940945597,
+          long: -21.9164402503724,
         },
       },
       {
@@ -467,8 +481,15 @@ const courses: Map<string, Course> = fromJS({
         teePads: {
           red: {
             par: 4,
-            location: null,
+            location: {
+              lat: 64.1373931803407,
+              long: -21.9164757896419,
+            },
           },
+        },
+        location: {
+          lat: 64.1370093729944,
+          long: -21.9172190968151,
         },
       },
       {
@@ -476,8 +497,15 @@ const courses: Map<string, Course> = fromJS({
         teePads: {
           red: {
             par: 3,
-            location: null,
+            location: {
+              lat: 64.1366753122435,
+              long: -21.9165239017661,
+            },
           },
+        },
+        location: {
+          lat: 64.1362757888289,
+          long: -21.9164798129554,
         },
       },
       {
@@ -485,8 +513,15 @@ const courses: Map<string, Course> = fromJS({
         teePads: {
           red: {
             par: 4,
-            location: null,
+            location: {
+              lat: 64.1362662334592,
+              long: -21.915754526874,
+            },
           },
+        },
+        location: {
+          lat: 64.1361306561754,
+          long: -21.9144232291932,
         },
       },
       {
@@ -494,8 +529,15 @@ const courses: Map<string, Course> = fromJS({
         teePads: {
           red: {
             par: 5,
-            location: null,
+            location: {
+              lat: 64.1362580191941,
+              long: -21.9129062723572,
+            },
           },
+        },
+        location: {
+          lat: 64.1368322633804,
+          long: -21.911335671341,
         },
       },
       {
@@ -503,8 +545,15 @@ const courses: Map<string, Course> = fromJS({
         teePads: {
           red: {
             par: 4,
-            location: null,
+            location: {
+              lat: 64.1369630210699,
+              long: -21.9108883291687,
+            },
           },
+        },
+        location: {
+          lat: 64.1369349416943,
+          long: -21.9095059018786,
         },
       },
       {
@@ -512,8 +561,15 @@ const courses: Map<string, Course> = fromJS({
         teePads: {
           red: {
             par: 3,
-            location: null,
+            location: {
+              lat: 64.1372823296712,
+              long: -21.9092913251574,
+            },
           },
+        },
+        location: {
+          lat: 64.1370561021046,
+          long: -21.9103489536996,
         },
       },
       {
@@ -521,8 +577,15 @@ const courses: Map<string, Course> = fromJS({
         teePads: {
           red: {
             par: 4,
-            location: null,
+            location: {
+              lat: 64.1372765880675,
+              long: -21.9104863330926,
+            },
           },
+        },
+        location: {
+          lat: 64.1375145502986,
+          long: -21.9120596163179,
         },
       },
     ],
