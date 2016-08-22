@@ -4,7 +4,6 @@ import {
   View,
   Text,
   TextInput,
-  TouchableHighlight,
  } from 'react-native'
 import Button from 'react-native-button'
 
@@ -14,16 +13,67 @@ export default class LogCourse extends Component<void, Props, void> {
 
   constructor() {
     super()
-    this.state = {hole: 0, par: 0, color: 'none', location: {}}
+    this.state = {hole: 0, par: 0, color: 'none', location: null, error: null, success: false}
   }
   setLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
       const currPos = JSON.stringify(position)
       this.setState({location: currPos})
-    })
+      this.setState({error: null})
+    }, (err) => {
+      this.setState({error: err})
+    },
+    {enableHighAccuracy: true, timeout: 1000, maximumAge: 500})
   }
   submitData() {
-    console.log(this.state)
+    this.setState({error: {
+      message: '',
+    }})
+
+    if (this.state.hole <= 0 || !this.state.hole) {
+      this.setState({error: {
+        message: 'Fill out the hole bruh',
+      }})
+      return
+    }
+    if (this.state.color === 'basket' && this.state.par) {
+      this.setState({error: {
+        message: 'Dude.. a basket doesn\'t have a pair.. go play golf',
+      }})
+      return
+    }
+    if (this.state.location === null) {
+      this.setState({error: {
+        message: 'You need to get location to log',
+      }})
+    }
+    const data = {
+      method: 'POST',
+      credentials: 'same-origin',
+      mode: 'same-origin',
+      body: JSON.stringify({
+        course: this.props,
+        location: this.state,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }
+    fetch('http://localhost:3000/log', data)
+        .then(response => response.json())  // promise
+        .then(() => {
+          this.setState({hole: 0, par: 0, color: 'none', location: null})
+          this.setState({success: true})
+          setTimeout(() => {
+            this.setState({success: false})
+          }, 2000)
+        })
+        .catch((error) => {
+          const myError = {message: 'Failed to save data'}
+          this.setState({error: myError})
+          this.setState({success: false})
+        })
   }
 
   render() {
@@ -44,23 +94,29 @@ export default class LogCourse extends Component<void, Props, void> {
           onChangeText={(text) => this.setState({par: text})}
         />
 
-        <TouchableHighlight
+        <Button
           onPress={() => this.setState({color: 'red'})}
         >
-          <Text>Red</Text>
-        </TouchableHighlight>
+          Red
+        </Button>
 
-        <TouchableHighlight
+        <Button
           onPress={() => this.setState({color: 'white'})}
         >
-          <Text>White</Text>
-        </TouchableHighlight>
+          White
+        </Button>
 
-        <TouchableHighlight
+        <Button
           onPress={() => this.setState({color: 'blue'})}
         >
-          <Text>Blue</Text>
-        </TouchableHighlight>
+          Blue
+        </Button>
+
+        <Button
+          onPress={() => this.setState({color: 'basket'})}
+        >
+          Basket
+        </Button>
 
         <Button
           onPress={() => this.setLocation()}
@@ -73,6 +129,20 @@ export default class LogCourse extends Component<void, Props, void> {
         >
           Submit
         </Button>
+        {this.state.success &&
+          <Text style={styles.greenColor}>Your log was successfull !</Text>
+        }
+        {this.state.location &&
+          <View style={styles.info}>
+            <Text>Location accuracy: {JSON.parse(this.state.location).coords.accuracy}</Text>
+            <Text>Hole: {this.state.hole}</Text>
+            <Text>Par: {this.state.par}</Text>
+            <Text>Color: {this.state.color}</Text>
+          </View>
+        }
+        {this.state.error !== null &&
+          <Text style={styles.redColor}>{this.state.error.message}</Text>
+        }
       </View>
     )
   }
@@ -83,5 +153,14 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flex: 1,
     backgroundColor: '#F1F1F1',
+  },
+  info: {
+    backgroundColor: '#e6f3f7',
+  },
+  redColor: {
+    color: 'red',
+  },
+  greenColor: {
+    color: 'green',
   },
 })
