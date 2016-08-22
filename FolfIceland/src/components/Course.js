@@ -1,12 +1,12 @@
 /* @flow */
 import React, {Component} from 'react'
 import {
-  MapView,
   StyleSheet,
   Text,
   TouchableHighlight,
   View,
 } from 'react-native'
+import MapView from 'react-native-maps'
 import Relay from 'react-relay'
 
 import type {Course as CourseType} from '../../../server/schemas/flow/course'
@@ -25,15 +25,17 @@ class CourseDetails extends Component<void, Props, void> {
       latitudeDelta: 0.01,
       longitudeDelta: 0.01,
     }
-    console.log(JSON.stringify(course, null, 2))
     return (
       <View style={styles.container}>
         <MapView
           style={styles.map}
-          region={mapRegion}
-          annotations={[{latitude: course.location.lat, longitude: course.location.long}]}
+          initialRegion={mapRegion}
           showsUserLocation
-        />
+        >
+          <MapView.Marker
+            coordinate={{latitude: course.location.lat, longitude: course.location.long}}
+          />
+        </MapView>
         <View style={styles.info}>
           <Text style={styles.name}>{course.name}</Text>
           <Text style={styles.metadata}>{course.city}</Text>
