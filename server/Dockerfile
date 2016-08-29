@@ -10,6 +10,7 @@ RUN npm install
 
 # Bundle app source
 COPY . /folf/src/app
+RUN npm build
 
 EXPOSE 8080
 CMD [ "npm", "start" ]
