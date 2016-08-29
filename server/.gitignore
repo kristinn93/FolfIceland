@@ -1,4 +1,5 @@
 src.tgz
+dist/
 npm-debug*
 .env
 .DS_Store
