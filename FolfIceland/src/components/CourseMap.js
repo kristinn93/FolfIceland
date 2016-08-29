@@ -65,6 +65,7 @@ class CourseMap extends Component<void, Props, void> {
           style={styles.map}
           initialRegion={mapRegion}
           showsUserLocation
+          cacheEnabled
         >
           {redTeePads.map((teePad) => {
             return (
