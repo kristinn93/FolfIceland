@@ -1,6 +1,7 @@
 package com.folficeland;
 
 import com.facebook.react.ReactActivity;
+import com.joshblour.reactnativediscovery.ReactNativeDiscoveryPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 
 public class MainActivity extends ReactActivity {

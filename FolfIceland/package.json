@@ -9,6 +9,7 @@
     "react": "15.2.1",
     "react-native": "0.31.0",
     "react-native-button": "^1.6.0",
+    "react-native-discovery": "0.0.4",
     "react-native-maps": "git+https://github.com/kfiroo/react-native-maps.git",
     "react-native-router-flux": "3.34.0",
     "react-relay": "0.9.2"
