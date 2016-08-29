@@ -2,7 +2,7 @@ const getBabelRelayPlugin = require('babel-relay-plugin')
 const introspectionQuery = require('graphql/utilities').introspectionQuery
 const request = require('sync-request')
 
-const url = 'http://localhost:3000/graphql'
+const url = 'http://104.236.229.101/graphql'
 
 const response = request('POST', url, {
   qs: {

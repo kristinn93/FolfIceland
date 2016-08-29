@@ -12,7 +12,7 @@ import CourseDetailsContainer from './components/CourseDetailsContainer'
 import CourseMapContainer from './components/CourseMapContainer'
 import LogCourse from './components/LogCourse'
 
-Relay.injectNetworkLayer(new DefaultNetworkLayer('http://localhost:3000/graphql'))
+Relay.injectNetworkLayer(new DefaultNetworkLayer('http://104.236.229.101/graphql'))
 
 export default class FolfIceland extends Component {
   render() {

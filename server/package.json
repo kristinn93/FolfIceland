@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "PORT=3000 TIER=development nodemon --ignore --exec node_modules/babel-cli/bin/babel-node --plugins transform-flow-strip-types -- ./index.js --hot",
-    "build": "TIER=production webpack --config server/webpack-server-babel.config.js",
-    "start": "node server/dist/server.js",
+    "build": "TIER=production webpack --config webpack-server-babel.config.js",
+    "start": "node dist/server.js",
     "test": "ava server/__tests__",
     "flow": "flow check",
     "lint": "node_modules/eslint/bin/eslint.js --ext \"js\" .",
