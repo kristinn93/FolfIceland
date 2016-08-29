@@ -31,5 +31,8 @@
     "eslint-plugin-lodash": "1.9.1",
     "eslint-plugin-react": "5.1.1",
     "flow-bin": "^0.30.0"
+  },
+  "dependencies": {
+    "mongoose": "4.5.10"
   }
 }
