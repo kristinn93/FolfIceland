@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-app": "cd FolfIceland && npm start",
+    "start-app": "cd FolfIceland && npm start -- --reset-cache",
     "start-server": "cd server && npm run dev",
     "lint": "eslint --ext \"js\" .",
     "test": "echo \"Error: no test specified\" && exit 1",
