@@ -1,6 +1,6 @@
 server {
   listen 80;
-  server_name 104.236.229.101;
+  server_name api.folf.tech;
   access_log /var/log/nginx/api.log;
 
   location / {
