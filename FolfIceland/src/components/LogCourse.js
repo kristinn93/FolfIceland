@@ -60,7 +60,7 @@ export default class LogCourse extends Component<void, Props, void> {
         'Content-Type': 'application/json',
       },
     }
-    fetch('http://localhost:3000/log', data)
+    fetch('http://api.folf.tech/log', data)
         .then(response => response.json())  // promise
         .then(() => {
           this.setState({hole: 0, par: 0, color: 'none', location: null})

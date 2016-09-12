@@ -19,7 +19,10 @@
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
-
+  
+  // THIS SHOULD BE THE IP ADDRESS OF YOUR DEV MACHINE IF YOU ARE RUNNING ON PHYSICAL PHONE
+  //jsCodeLocation = [NSURL URLWithString:@"http://192.168:8081/index.ios.bundle?platform=ios&dev=true"];
+  
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"FolfIceland"
                                                initialProperties:nil
