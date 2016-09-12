@@ -28,35 +28,3 @@ export default class FolfIceland extends Component {
     )
   }
 }
-
-// Discovery with react-native-discovery
-
-Discovery.initialize(
-  discoveryUUID,
-  'FolfUser'
-)
-
-Discovery.setShouldAdvertise(true)
-Discovery.setShouldDiscover(true)
-
-DeviceEventEmitter.addListener(
-  'discoveredUsers',
-  (data) => {
-    if (data.uuid === discoveryUUID) {
-      if (data.didChange || data.usersChanged) {
-        // slight callback discrepancy between the iOS and Android libraries
-        console.log('Found users')
-        console.log(data.users)
-      }
-    }
-  }
-)
-
-// Listen for bluetooth state changes
-DeviceEventEmitter.addListener(
-  'bleStateChanged',
-  (event) => {
-    console.log('BLE is on: ')
-    console.log(event.isOn)
-  }
-)

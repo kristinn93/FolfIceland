@@ -19,13 +19,13 @@
   NSURL *jsCodeLocation;
 
   // STATIC BUILD curl http://localhost:8081/index.ios.bundle -o main.jsbundle    ... then File -> Add Files To "Folf Iceland" select main.jsbundle
-  //jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
   
   // IF YOU ARE RUNNING ON SIMULATOR
-  //jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+  //jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios.js" fallbackResource:nil];
   
   // THIS SHOULD BE THE IP ADDRESS OF YOUR DEV MACHINE IF YOU ARE RUNNING ON PHYSICAL PHONE
-  jsCodeLocation = [NSURL URLWithString:@"http://192.168:8081/index.ios.bundle?platform=ios&dev=true"];
+  //jsCodeLocation = [NSURL URLWithString:@"http://192.168.124.104:8081/index.ios.bundle?platform=ios&dev=true"];
   
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"FolfIceland"
