@@ -15,7 +15,8 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "reason": "bsc -pp refmt -ipml hello.re"
+    "reason": "bsb",
+    "reason:watch": "bsb -make-world -w"
   },
   "jest": {
     "preset": "jest-expo"
@@ -23,6 +24,7 @@
   "dependencies": {
     "expo": "^16.0.0",
     "react": "16.0.0-alpha.6",
-    "react-native": "^0.43.4"
+    "react-native": "^0.43.4",
+    "reason-react": "0.1.3"
   }
 }
