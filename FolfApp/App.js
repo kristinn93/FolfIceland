@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {comp as Root} from './lib/js/src/hello.js';
+import {comp as Root} from './lib/js/src/Root.js';
 
 export default class App extends React.Component {
   render() {
