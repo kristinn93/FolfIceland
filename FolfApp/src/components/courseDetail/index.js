@@ -18,6 +18,30 @@ class CourseDetail extends React.Component {
   }
 }
 
-export default graphql(gql`
-  query {folf {courses {name}}}
-`)(CourseDetail);
+export default graphql(
+  gql`
+  query Courses($name: String!){
+  course(name: $name) {
+    name
+    city
+    location {
+      lat
+      long
+    }
+    numberOfBaskets
+    par {
+      red
+      white
+      blue
+    }
+  }
+}
+`,
+  {
+    options: ownProps => ({
+      variables: {
+        name: ownProps.navigation.state.params.name,
+      },
+    }),
+  }
+)(CourseDetail);
