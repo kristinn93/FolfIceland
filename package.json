@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-app": "cd FolfIceland && npm start -- --reset-cache",
     "start-server": "cd server && npm run dev",
-    "lint": "eslint --ext \"js\" .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "update": "cd FolfIceland && npm install && cd ../server && npm install"
+    "install": "cd FolfApp && yarn install --pure-lockfile && cd ../server && yarn install --pure-lockfile"
   },
   "repository": {
     "type": "git",
@@ -21,18 +18,7 @@
   },
   "homepage": "https://github.com/kristinn93/FolfIceland#readme",
   "devDependencies": {
-    "babel": "6.23.0",
-    "babel-eslint": "7.2.3",
-    "eslint": "3.19.0",
-    "eslint-config-airbnb": "14.1.0",
-    "eslint-plugin-flow-vars": "0.5.0",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "5.0.0",
-    "eslint-plugin-lodash": "2.4.2",
-    "eslint-plugin-react": "7.0.0",
-    "flow-bin": "^0.45.0"
   },
   "dependencies": {
-    "mongoose": "4.9.7"
   }
 }
