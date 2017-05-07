@@ -11,7 +11,7 @@ class CourseDetail extends React.Component {
     return (
       <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
         <Text>
-          CourseDetail
+          Course details for {this.props.navigation.state.params.name}
         </Text>
       </View>
     );

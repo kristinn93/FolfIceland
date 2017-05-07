@@ -14,7 +14,7 @@ import CourseDetails from './src/components/courseDetail';
 
 const Router = StackNavigator({
   list: { screen: CourseList },
-  details: { screen: CourseDetails },
+  details: { screen: CourseDetails, path: 'details/:name' },
 });
 
 //TODO: Point the uri to the local ip address of your computer running the server
