@@ -22,6 +22,8 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo/ex-navigation": "2.11.1",
+    "babel-preset-react-native-stage-0": "1.0.1",
     "expo": "^16.0.0",
     "react": "16.0.0-alpha.6",
     "react-apollo": "1.2.0",

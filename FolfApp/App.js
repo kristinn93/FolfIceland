@@ -5,6 +5,19 @@ import {
   ApolloProvider,
   createNetworkInterface,
 } from 'react-apollo';
+import {
+  createRouter,
+  NavigationProvider,
+  StackNavigation,
+} from '@expo/ex-navigation';
+
+import CourseList from './src/components/courseList';
+import CourseDetails from './src/components/courseDetail';
+
+export const Router = createRouter(() => ({
+  list: () => CourseList,
+  details: () => CourseDetails,
+}));
 
 //TODO: Point the uri to the local ip address of your computer running the server
 const networkInterface = createNetworkInterface({
@@ -18,7 +31,9 @@ export default class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <Root />
+        <NavigationProvider router={Router}>
+          <StackNavigation initialRoute={Router.getRoute('list')} />
+        </NavigationProvider>
       </ApolloProvider>
     );
   }
