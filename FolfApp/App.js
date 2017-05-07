@@ -1,18 +1,25 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {comp as Root} from './lib/js/src/Root.js';
+import Root from './src';
+import {
+  ApolloClient,
+  ApolloProvider,
+  createNetworkInterface,
+} from 'react-apollo';
+
+//TODO: Point the uri to the local ip address of your computer running the server
+const networkInterface = createNetworkInterface({
+  uri: 'http://192.168.1.20:3000/graphql',
+});
+const client = new ApolloClient({
+  networkInterface,
+});
 
 export default class App extends React.Component {
   render() {
-    return <Root message="Hello world" />;
+    return (
+      <ApolloProvider client={client}>
+        <Root />
+      </ApolloProvider>
+    );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
