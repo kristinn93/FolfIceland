@@ -15,6 +15,13 @@ The following instructions will only be applicable for MacOS
 + `opam install merlin`
 + `npm -g install git://github.com/reasonml/reason-cli.git`
 
+
+### Starting application
+Until bs-react-native gets released to NPM we need to have it as a submodule in our project.
+Before starting the application make sure to run
+
+`git submodule update --init --recursive`
+
 ### Running application
 
 You'll need two terminals to run the app and run the following commands in separate terminals
