@@ -1,19 +1,23 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button } from 'react-native';
 
 import { gql, graphql } from 'react-apollo';
 
 class CourseList extends React.Component {
+  static navigationOptions = {
+    title: 'Course List',
+  };
   render() {
     console.log(this.props.data);
     return (
       <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-        <Text
-          delayLongPress={500000}
-          onPress={() => this.props.navigator.push('details')}
-        >
+        <Text>
           CourseList
         </Text>
+        <Button
+          onPress={() => this.props.navigation.navigate('details')}
+          title="details view"
+        />
       </View>
     );
   }
