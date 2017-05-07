@@ -1,18 +1,36 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {comp as Root} from './lib/js/src/Root.js';
+// import Root from './src';
+import { AppRegistry } from 'react-native';
+import {
+  ApolloClient,
+  ApolloProvider,
+  createNetworkInterface,
+} from 'react-apollo';
+
+import { StackNavigator } from 'react-navigation';
+
+import CourseList from './src/components/courseList';
+import CourseDetails from './src/components/courseDetail';
+
+const Router = StackNavigator({
+  list: { screen: CourseList },
+  details: { screen: CourseDetails },
+});
+
+//TODO: Point the uri to the local ip address of your computer running the server
+const networkInterface = createNetworkInterface({
+  uri: 'http://192.168.1.20:3000/graphql',
+});
+const client = new ApolloClient({
+  networkInterface,
+});
 
 export default class App extends React.Component {
   render() {
-    return <Root message="Hello world" />;
+    return (
+      <ApolloProvider client={client}>
+        <Router />
+      </ApolloProvider>
+    );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
