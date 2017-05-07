@@ -1,0 +1,19 @@
+{
+    "name" : "FolfApp",
+    "reason": {
+        "react-jsx": true
+    },
+    "bs-dependencies": ["reason-react"],
+    "sources": [{
+        "dir": "src",
+        "subdirs": [{
+            "dir": "bsReactNative",
+            "subdirs": [{
+                "dir": "src",
+                "subdirs": [{
+                    "dir": "components"
+                }]
+            }]
+        }]
+    }]
+}
