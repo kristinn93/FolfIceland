@@ -3,7 +3,7 @@ module CourseDetails = {
   include ReactRe.Component.JsProps;
   let name = "CourseDetails";
   type par = Js.t {. red : Js.Null.t int, white : Js.Null.t int, blue : Js.Null.t int};
-  type location = Js.t {. lat : int, long : int};
+  type location = Js.t {. lat : float, long : float};
   type course =
     Js.t {. name : string, city : string, par : par, location : location, __typename : string};
   type props = {course: option course, loading: bool};
