@@ -1,3 +1,0 @@
-[submodule "FolfApp/src/bsReactNative"]
-	path = FolfApp/src/bsReactNative
-	url = git@github.com:BuckleTypes/bs-react-native.git
