@@ -15,22 +15,35 @@ module CourseDetails = {
   let renderPars (par: par) =>
     <View>
       (
-        switch (Js.Null.to_opt par##red) {
-        | Some numPar => <Text> (ReactRe.stringToElement ("Red: " ^ string_of_int numPar)) </Text>
-        | None => <View />
-        }
-      )
-      (
-        switch (Js.Null.to_opt par##white) {
-        | Some numPar =>
-          <Text> (ReactRe.stringToElement ("White: " ^ string_of_int numPar)) </Text>
-        | None => <View />
-        }
-      )
-      (
-        switch (Js.Null.to_opt par##blue) {
-        | Some numPar => <Text> (ReactRe.stringToElement ("Blue: " ^ string_of_int numPar)) </Text>
-        | None => <View />
+        switch (Js.Null.to_opt par##red, Js.Null.to_opt par##white, Js.Null.to_opt par##blue) {
+        | (None, None, None) =>
+          <Text> (ReactRe.stringToElement "This course has not been logged yet") </Text>
+        | (Some 0, Some 0, Some 0) =>
+          <Text> (ReactRe.stringToElement "This course has not been logged yet") </Text>
+        | _ =>
+          <View>
+            (
+              switch (Js.Null.to_opt par##red) {
+              | Some numPar =>
+                <Text> (ReactRe.stringToElement ("Red: " ^ string_of_int numPar)) </Text>
+              | None => <View />
+              }
+            )
+            (
+              switch (Js.Null.to_opt par##white) {
+              | Some numPar =>
+                <Text> (ReactRe.stringToElement ("White: " ^ string_of_int numPar)) </Text>
+              | None => <View />
+              }
+            )
+            (
+              switch (Js.Null.to_opt par##blue) {
+              | Some numPar =>
+                <Text> (ReactRe.stringToElement ("Blue: " ^ string_of_int numPar)) </Text>
+              | None => <View />
+              }
+            )
+          </View>
         }
       )
     </View>;
