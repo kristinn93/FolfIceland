@@ -13,7 +13,7 @@ class CourseDetail extends React.Component {
     return (
       <CourseListRe
         course={this.props.data && this.props.data.course}
-        loading={this.props.data.loading}
+        loading={this.props.data && this.props.data.loading}
       />
     );
   }
