@@ -10,7 +10,7 @@ import {
 import {StackNavigator} from 'react-navigation';
 
 import CourseList from './src/components/courseList';
-import CourseDetails from './src/components/courseDetail';
+import CourseDetails from './src/components/courseDetails';
 
 const Router = StackNavigator({
   list: {screen: CourseList},

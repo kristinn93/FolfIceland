@@ -1,7 +1,8 @@
 module CourseList = {
   include ReactNative;
   include ReactRe.Component.JsProps;
-  type course = Js.t {. name : string, __typename : string};
+  let name = "CourseList";
+  type course = Js.t {. name : string};
   type route = Js.t {. name : string};
   type props = {courses: option (array course), navigate: string => route => unit};
   type jsProps =
@@ -13,7 +14,6 @@ module CourseList = {
         navigate: jsProps##navigate
       }
     );
-  let name = "CourseList";
   let navigateTo (navigate: route => unit) (route: route) => navigate route;
   let renderName (navigate: route => unit) (course: course) => {
     let route = {"name": course##name};

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {gql, graphql} from 'react-apollo';
-import {comp as CourseListRe} from '../../../lib/js/src/courseList.js';
+import {comp as CourseListRe} from '../../lib/js/src/components/courseList.js';
 
 class CourseList extends React.Component {
   static navigationOptions = {

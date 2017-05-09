@@ -1,7 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
 
-import { gql, graphql } from 'react-apollo';
+import {gql, graphql} from 'react-apollo';
+import {
+  comp as CourseListRe,
+} from '../../lib/js/src/components/courseDetails.js';
 
 class CourseDetail extends React.Component {
   static navigationOptions = {
@@ -9,11 +11,10 @@ class CourseDetail extends React.Component {
   };
   render() {
     return (
-      <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-        <Text>
-          Course details for {this.props.navigation.state.params.name}
-        </Text>
-      </View>
+      <CourseListRe
+        course={this.props.data && this.props.data.course}
+        loading={this.props.data && this.props.data.loading}
+      />
     );
   }
 }
