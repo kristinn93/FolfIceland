@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, Linking, Platform } from 'react-native';
+import { Linking, Platform } from 'react-native';
 import { gql, graphql } from 'react-apollo';
 import {
   comp as CourseListRe,
