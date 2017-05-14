@@ -70,6 +70,7 @@ module CourseDetails = {
             "latitudeDelta": 0.008,
             "longitudeDelta": 0.008
           };
+          let marker = {"latitude": course##location##lat, "longitude": course##location##long};
           <View style=StyleSheet.absoluteFillObject>
             <MapView
               region
@@ -77,14 +78,7 @@ module CourseDetails = {
                       Style.combine
                         StyleSheet.absoluteFillObject (Style.style [Style.marginTop 100])
                     )
-              markers=[
-                        {
-                          "latlng": {
-                            "latitude": course##location##lat,
-                            "longitude": course##location##long
-                          }
-                        }
-                      ]
+              marker
             />
             <Text style=(Style.style [Style.textAlign `center])>
               (ReactRe.stringToElement course##name)

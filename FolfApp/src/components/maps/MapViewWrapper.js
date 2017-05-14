@@ -6,9 +6,7 @@ export const MapViewWrapper = props => {
   console.log(props);
   return (
     <MapView style={props.style} region={props.region}>
-      {props.markers.map(marker => (
-        <MapView.Marker coordinate={marker.latlng} />
-      ))}
+      <MapView.Marker coordinate={props.marker} />
     </MapView>
   );
 };
