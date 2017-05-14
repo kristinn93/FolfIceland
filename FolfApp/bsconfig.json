@@ -3,13 +3,21 @@
     "reason": {
         "react-jsx": true
     },
-    "bs-dependencies": ["bs-react-native", "reason-react"],
+    "bs-dependencies": ["reason-react"],
     "sources": [{
         "dir": "src",
         "subdirs": [{
             "dir": "components",
             "subdirs": [{
                 "dir": "maps"
+            }]
+        }, {
+            "dir": "bsReactNative",
+            "subdirs": [{
+                "dir": "src",
+                "subdirs": [{
+                    "dir": "components"
+                }]
             }]
         }]
     }]

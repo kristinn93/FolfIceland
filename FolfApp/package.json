@@ -22,7 +22,6 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "bs-react-native": "git+https://github.com/BuckleTypes/bs-react-native.git",
     "expo": "^16.0.0",
     "react": "16.0.0-alpha.6",
     "react-apollo": "1.2.0",

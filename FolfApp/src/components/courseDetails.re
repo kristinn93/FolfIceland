@@ -72,11 +72,11 @@ module CourseDetails = {
     | (Some 0, Some 0, Some 0) => <View />
     | (_, _, _) =>
       <View
-        style=(Style.combine StyleSheet.absoluteFillObject (Style.style [Style.marginTop 100]))>
+        style=(Style.combine StyleSheet.absoluteFillObject (Style.style [Style.marginTop 100.0]))>
         <Button onPress=(fun () => openMaps location) title="Open in Maps" />
         <MapView
           region
-          style=(Style.combine StyleSheet.absoluteFillObject (Style.style [Style.marginTop 40]))
+          style=(Style.combine StyleSheet.absoluteFillObject (Style.style [Style.marginTop 40.0]))
           marker
         />
       </View>
