@@ -64,7 +64,22 @@ module CourseDetails = {
       (
         switch (props.course, props.loading) {
         | (Some course, _) =>
-          <View>
+          let region = {
+            "latitude": course##location##lat,
+            "longitude": course##location##long,
+            "latitudeDelta": 0.008,
+            "longitudeDelta": 0.008
+          };
+          let marker = {"latitude": course##location##lat, "longitude": course##location##long};
+          <View style=StyleSheet.absoluteFillObject>
+            <MapView
+              region
+              style=(
+                      Style.combine
+                        StyleSheet.absoluteFillObject (Style.style [Style.marginTop 100])
+                    )
+              marker
+            />
             <Text style=(Style.style [Style.textAlign `center])>
               (ReactRe.stringToElement course##name)
             </Text>
