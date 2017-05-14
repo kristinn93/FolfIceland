@@ -48,11 +48,33 @@ module CourseDetails = {
       )
     </View>;
   let render {props} =>
-    <View style=(Style.style [Style.alignItems `center, Style.alignItems `center, Style.flex 1.0])>
+    <View
+      style=(Style.style [Style.alignItems `center, Style.justifyContent `center, Style.flex 1.0])>
       (
         switch (props.course, props.loading) {
         | (Some course, _) =>
-          <View>
+          let region = {
+            "latitude": course##location##lat,
+            "longitude": course##location##long,
+            "latitudeDelta": 0.008,
+            "longitudeDelta": 0.008
+          };
+          <View style=StyleSheet.absoluteFillObject>
+            <MapView
+              region
+              style=(
+                      Style.combine
+                        StyleSheet.absoluteFillObject (Style.style [Style.marginTop 100])
+                    )
+              markers=[
+                        {
+                          "latlng": {
+                            "latitude": course##location##lat,
+                            "longitude": course##location##long
+                          }
+                        }
+                      ]
+            />
             <Text> (ReactRe.stringToElement course##name) </Text>
             <Text> (ReactRe.stringToElement course##city) </Text>
             (renderPars course##par)

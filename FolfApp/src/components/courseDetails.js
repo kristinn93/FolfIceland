@@ -2,7 +2,7 @@ import React from 'react';
 
 import {gql, graphql} from 'react-apollo';
 import {
-  comp as CourseListRe,
+  comp as CourseDetailsRe,
 } from '../../lib/js/src/components/courseDetails.js';
 
 class CourseDetail extends React.Component {
@@ -11,7 +11,7 @@ class CourseDetail extends React.Component {
   };
   render() {
     return (
-      <CourseListRe
+      <CourseDetailsRe
         course={this.props.data && this.props.data.course}
         loading={this.props.data && this.props.data.loading}
       />
