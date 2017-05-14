@@ -6,11 +6,16 @@ module CourseDetails = {
   type location = Js.t {. lat : float, long : float};
   type course =
     Js.t {. name : string, city : string, par : par, location : location, __typename : string};
-  type props = {course: option course, loading: bool};
-  type jsProps = Js.t {. course : Js.Null_undefined.t course, loading : bool};
+  type props = {course: option course, loading: bool, openMaps: location => unit};
+  type jsProps =
+    Js.t {. course : Js.Null_undefined.t course, loading : bool, openMaps : location => unit};
   let jsPropsToReasonProps =
     Some (
-      fun jsProps => {course: Js.Null_undefined.to_opt jsProps##course, loading: jsProps##loading}
+      fun jsProps => {
+        course: Js.Null_undefined.to_opt jsProps##course,
+        loading: jsProps##loading,
+        openMaps: jsProps##openMaps
+      }
     );
   let renderPars (par: par) =>
     <View>
@@ -25,21 +30,27 @@ module CourseDetails = {
             (
               switch (Js.Null.to_opt par##red) {
               | Some numPar =>
-                <Text> (ReactRe.stringToElement ("Red: " ^ string_of_int numPar)) </Text>
+                <Text style=(Style.style [Style.textAlign `center])>
+                  (ReactRe.stringToElement ("Red: " ^ string_of_int numPar))
+                </Text>
               | None => <View />
               }
             )
             (
               switch (Js.Null.to_opt par##white) {
               | Some numPar =>
-                <Text> (ReactRe.stringToElement ("White: " ^ string_of_int numPar)) </Text>
+                <Text style=(Style.style [Style.textAlign `center])>
+                  (ReactRe.stringToElement ("White: " ^ string_of_int numPar))
+                </Text>
               | None => <View />
               }
             )
             (
               switch (Js.Null.to_opt par##blue) {
               | Some numPar =>
-                <Text> (ReactRe.stringToElement ("Blue: " ^ string_of_int numPar)) </Text>
+                <Text style=(Style.style [Style.textAlign `center])>
+                  (ReactRe.stringToElement ("Blue: " ^ string_of_int numPar))
+                </Text>
               | None => <View />
               }
             )
@@ -75,9 +86,14 @@ module CourseDetails = {
                         }
                       ]
             />
-            <Text> (ReactRe.stringToElement course##name) </Text>
-            <Text> (ReactRe.stringToElement course##city) </Text>
+            <Text style=(Style.style [Style.textAlign `center])>
+              (ReactRe.stringToElement course##name)
+            </Text>
+            <Text style=(Style.style [Style.textAlign `center])>
+              (ReactRe.stringToElement course##city)
+            </Text>
             (renderPars course##par)
+            <Button onPress=(fun () => props.openMaps course##location) title="Open in Maps" />
           </View>
         | (_, true) => <Text> (ReactRe.stringToElement "Loading...") </Text>
         | (_, _) =>
@@ -89,4 +105,4 @@ module CourseDetails = {
 
 include ReactRe.CreateComponent CourseDetails;
 
-let createElement ::course ::loading => wrapProps {course, loading};
+let createElement ::course ::loading ::openMaps => wrapProps {course, loading, openMaps};
