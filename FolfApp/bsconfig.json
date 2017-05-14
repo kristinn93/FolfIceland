@@ -7,7 +7,10 @@
     "sources": [{
         "dir": "src",
         "subdirs": [{
-            "dir": "components"
+            "dir": "components",
+            "subdirs": [{
+                "dir": "maps"
+            }]
         }]
     }]
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {gql, graphql} from 'react-apollo';
 import {comp as CourseListRe} from '../../lib/js/src/components/courseList.js';
 

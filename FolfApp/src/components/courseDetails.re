@@ -6,11 +6,16 @@ module CourseDetails = {
   type location = Js.t {. lat : float, long : float};
   type course =
     Js.t {. name : string, city : string, par : par, location : location, __typename : string};
-  type props = {course: option course, loading: bool};
-  type jsProps = Js.t {. course : Js.Null_undefined.t course, loading : bool};
+  type props = {course: option course, loading: bool, openMaps: location => unit};
+  type jsProps =
+    Js.t {. course : Js.Null_undefined.t course, loading : bool, openMaps : location => unit};
   let jsPropsToReasonProps =
     Some (
-      fun jsProps => {course: Js.Null_undefined.to_opt jsProps##course, loading: jsProps##loading}
+      fun jsProps => {
+        course: Js.Null_undefined.to_opt jsProps##course,
+        loading: jsProps##loading,
+        openMaps: jsProps##openMaps
+      }
     );
   let renderPars (par: par) =>
     <View>
@@ -25,21 +30,27 @@ module CourseDetails = {
             (
               switch (Js.Null.to_opt par##red) {
               | Some numPar =>
-                <Text> (ReactRe.stringToElement ("Red: " ^ string_of_int numPar)) </Text>
+                <Text style=(Style.style [Style.textAlign `center])>
+                  (ReactRe.stringToElement ("Red: " ^ string_of_int numPar))
+                </Text>
               | None => <View />
               }
             )
             (
               switch (Js.Null.to_opt par##white) {
               | Some numPar =>
-                <Text> (ReactRe.stringToElement ("White: " ^ string_of_int numPar)) </Text>
+                <Text style=(Style.style [Style.textAlign `center])>
+                  (ReactRe.stringToElement ("White: " ^ string_of_int numPar))
+                </Text>
               | None => <View />
               }
             )
             (
               switch (Js.Null.to_opt par##blue) {
               | Some numPar =>
-                <Text> (ReactRe.stringToElement ("Blue: " ^ string_of_int numPar)) </Text>
+                <Text style=(Style.style [Style.textAlign `center])>
+                  (ReactRe.stringToElement ("Blue: " ^ string_of_int numPar))
+                </Text>
               | None => <View />
               }
             )
@@ -47,15 +58,51 @@ module CourseDetails = {
         }
       )
     </View>;
+  type region =
+    Js.t {. latitude : float, longitude : float, latitudeDelta : float, longitudeDelta : float};
+  type marker = Js.t {. latitude : float, longitude : float};
+  let renderMapDetails
+      (par: par)
+      (location: location)
+      (openMaps: location => unit)
+      (region: region)
+      (marker: marker) =>
+    switch (Js.Null.to_opt par##red, Js.Null.to_opt par##white, Js.Null.to_opt par##blue) {
+    | (None, None, None) => <View />
+    | (Some 0, Some 0, Some 0) => <View />
+    | (_, _, _) =>
+      <View
+        style=(Style.combine StyleSheet.absoluteFillObject (Style.style [Style.marginTop 100]))>
+        <Button onPress=(fun () => openMaps location) title="Open in Maps" />
+        <MapView
+          region
+          style=(Style.combine StyleSheet.absoluteFillObject (Style.style [Style.marginTop 40]))
+          marker
+        />
+      </View>
+    };
   let render {props} =>
-    <View style=(Style.style [Style.alignItems `center, Style.alignItems `center, Style.flex 1.0])>
+    <View
+      style=(Style.style [Style.alignItems `center, Style.justifyContent `center, Style.flex 1.0])>
       (
         switch (props.course, props.loading) {
         | (Some course, _) =>
-          <View>
-            <Text> (ReactRe.stringToElement course##name) </Text>
-            <Text> (ReactRe.stringToElement course##city) </Text>
+          let region = {
+            "latitude": course##location##lat,
+            "longitude": course##location##long,
+            "latitudeDelta": 0.008,
+            "longitudeDelta": 0.008
+          };
+          let marker = {"latitude": course##location##lat, "longitude": course##location##long};
+          <View style=StyleSheet.absoluteFillObject>
+            <Text style=(Style.style [Style.textAlign `center])>
+              (ReactRe.stringToElement course##name)
+            </Text>
+            <Text style=(Style.style [Style.textAlign `center])>
+              (ReactRe.stringToElement course##city)
+            </Text>
             (renderPars course##par)
+            (renderMapDetails course##par course##location props.openMaps region marker)
           </View>
         | (_, true) => <Text> (ReactRe.stringToElement "Loading...") </Text>
         | (_, _) =>
@@ -67,4 +114,4 @@ module CourseDetails = {
 
 include ReactRe.CreateComponent CourseDetails;
 
-let createElement ::course ::loading => wrapProps {course, loading};
+let createElement ::course ::loading ::openMaps => wrapProps {course, loading, openMaps};
