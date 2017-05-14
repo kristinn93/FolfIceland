@@ -17,8 +17,10 @@ module CourseDetails = {
         openMaps: jsProps##openMaps
       }
     );
+  let dimensions = Dimensions.get `window;
   let renderPars (par: par) =>
     <View>
+      <Text style=(Style.style [Style.fontSize 20.0])> (ReactRe.stringToElement "Par") </Text>
       (
         switch (Js.Null.to_opt par##red, Js.Null.to_opt par##white, Js.Null.to_opt par##blue) {
         | (None, None, None) =>
@@ -26,11 +28,11 @@ module CourseDetails = {
         | (Some 0, Some 0, Some 0) =>
           <Text> (ReactRe.stringToElement "This course has not been logged yet") </Text>
         | _ =>
-          <View>
+          <View style=(Style.style [Style.flexDirection `row, Style.justifyContent `spaceBetween])>
             (
               switch (Js.Null.to_opt par##red) {
               | Some numPar =>
-                <Text style=(Style.style [Style.textAlign `center])>
+                <Text style=(Style.style [Style.fontSize 18.0])>
                   (ReactRe.stringToElement ("Red: " ^ string_of_int numPar))
                 </Text>
               | None => <View />
@@ -39,7 +41,7 @@ module CourseDetails = {
             (
               switch (Js.Null.to_opt par##white) {
               | Some numPar =>
-                <Text style=(Style.style [Style.textAlign `center])>
+                <Text style=(Style.style [Style.fontSize 18.0])>
                   (ReactRe.stringToElement ("White: " ^ string_of_int numPar))
                 </Text>
               | None => <View />
@@ -48,7 +50,7 @@ module CourseDetails = {
             (
               switch (Js.Null.to_opt par##blue) {
               | Some numPar =>
-                <Text style=(Style.style [Style.textAlign `center])>
+                <Text style=(Style.style [Style.fontSize 18.0])>
                   (ReactRe.stringToElement ("Blue: " ^ string_of_int numPar))
                 </Text>
               | None => <View />
@@ -71,19 +73,32 @@ module CourseDetails = {
     | (None, None, None) => <View />
     | (Some 0, Some 0, Some 0) => <View />
     | (_, _, _) =>
-      <View
-        style=(Style.combine StyleSheet.absoluteFillObject (Style.style [Style.marginTop 100.0]))>
-        <Button onPress=(fun () => openMaps location) title="Open in Maps" />
+      <View>
         <MapView
           region
-          style=(Style.combine StyleSheet.absoluteFillObject (Style.style [Style.marginTop 40.0]))
+          style=(
+                  Style.style [
+                    Style.height (float_of_int (dimensions##height - 300)),
+                    Style.width (float_of_int dimensions##width)
+                  ]
+                )
           marker
         />
+        <View style=(Style.style [Style.backgroundColor "#EEEEEE"])>
+          <Button color="#666666" onPress=(fun () => openMaps location) title="Get directions" />
+        </View>
       </View>
     };
   let render {props} =>
     <View
-      style=(Style.style [Style.alignItems `center, Style.justifyContent `center, Style.flex 1.0])>
+      style=(
+              Style.style [
+                Style.alignItems `center,
+                Style.justifyContent `flexStart,
+                Style.flex 1.0,
+                Style.backgroundColor "#FAFAFA"
+              ]
+            )>
       (
         switch (props.course, props.loading) {
         | (Some course, _) =>
@@ -94,15 +109,29 @@ module CourseDetails = {
             "longitudeDelta": 0.008
           };
           let marker = {"latitude": course##location##lat, "longitude": course##location##long};
-          <View style=StyleSheet.absoluteFillObject>
-            <Text style=(Style.style [Style.textAlign `center])>
-              (ReactRe.stringToElement course##name)
-            </Text>
-            <Text style=(Style.style [Style.textAlign `center])>
-              (ReactRe.stringToElement course##city)
-            </Text>
-            (renderPars course##par)
-            (renderMapDetails course##par course##location props.openMaps region marker)
+          <View>
+            <View style=(Style.style [Style.flex 93.0])>
+              (renderMapDetails course##par course##location props.openMaps region marker)
+              <View style=(Style.style [Style.marginLeft 10.0, Style.marginBottom 10.0])>
+                <Text style=(Style.style [Style.fontSize 40.0])>
+                  (ReactRe.stringToElement course##name)
+                </Text>
+                <Text style=(Style.style [Style.fontSize 25.0])>
+                  (ReactRe.stringToElement course##city)
+                </Text>
+                (renderPars course##par)
+              </View>
+            </View>
+            <View
+              style=(
+                      Style.style [
+                        Style.flex 7.0,
+                        Style.borderTopWidth 2.0,
+                        Style.borderTopColor "#EEEEEE"
+                      ]
+                    )>
+              <Button onPress=(fun () => ()) color="#FF0000" title="Play" />
+            </View>
           </View>
         | (_, true) => <Text> (ReactRe.stringToElement "Loading...") </Text>
         | (_, _) =>
