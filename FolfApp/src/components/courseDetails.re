@@ -58,6 +58,29 @@ module CourseDetails = {
         }
       )
     </View>;
+  type region =
+    Js.t {. latitude : float, longitude : float, latitudeDelta : float, longitudeDelta : float};
+  type marker = Js.t {. latitude : float, longitude : float};
+  let renderMapDetails
+      (par: par)
+      (location: location)
+      (openMaps: location => unit)
+      (region: region)
+      (marker: marker) =>
+    switch (Js.Null.to_opt par##red, Js.Null.to_opt par##white, Js.Null.to_opt par##blue) {
+    | (None, None, None) => <View />
+    | (Some 0, Some 0, Some 0) => <View />
+    | (_, _, _) =>
+      <View
+        style=(Style.combine StyleSheet.absoluteFillObject (Style.style [Style.marginTop 100]))>
+        <Button onPress=(fun () => openMaps location) title="Open in Maps" />
+        <MapView
+          region
+          style=(Style.combine StyleSheet.absoluteFillObject (Style.style [Style.marginTop 40]))
+          marker
+        />
+      </View>
+    };
   let render {props} =>
     <View
       style=(Style.style [Style.alignItems `center, Style.justifyContent `center, Style.flex 1.0])>
@@ -72,14 +95,6 @@ module CourseDetails = {
           };
           let marker = {"latitude": course##location##lat, "longitude": course##location##long};
           <View style=StyleSheet.absoluteFillObject>
-            <MapView
-              region
-              style=(
-                      Style.combine
-                        StyleSheet.absoluteFillObject (Style.style [Style.marginTop 100])
-                    )
-              marker
-            />
             <Text style=(Style.style [Style.textAlign `center])>
               (ReactRe.stringToElement course##name)
             </Text>
@@ -87,7 +102,7 @@ module CourseDetails = {
               (ReactRe.stringToElement course##city)
             </Text>
             (renderPars course##par)
-            <Button onPress=(fun () => props.openMaps course##location) title="Open in Maps" />
+            (renderMapDetails course##par course##location props.openMaps region marker)
           </View>
         | (_, true) => <Text> (ReactRe.stringToElement "Loading...") </Text>
         | (_, _) =>
