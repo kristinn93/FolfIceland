@@ -33,7 +33,7 @@ const Router = StackNavigator({
 
 //TODO: Point the uri to the local ip address of your computer running the server
 const networkInterface = createNetworkInterface({
-  uri: 'http://192.168.1.8:3000/graphql',
+  uri: 'http://192.168.1.12:3000/graphql',
 });
 const client = new ApolloClient({
   networkInterface,
