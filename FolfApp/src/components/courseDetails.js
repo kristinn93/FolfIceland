@@ -1,6 +1,6 @@
 import React from 'react';
-import {Linking, Platform} from 'react-native';
-import {gql, graphql} from 'react-apollo';
+import { Linking, Platform } from 'react-native';
+import { gql, graphql } from 'react-apollo';
 import {
   comp as CourseDetailsRe,
 } from '../../lib/js/src/components/courseDetails.js';
@@ -8,6 +8,7 @@ import {
 class CourseDetail extends React.Component {
   static navigationOptions = {
     title: 'Course Details',
+    tabBarVisible: false,
   };
   redirectToMap(location) {
     if (Platform.OS === 'ios') {
