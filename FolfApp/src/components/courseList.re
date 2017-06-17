@@ -16,8 +16,9 @@ let make ::courses=? ::navigate _ => {
     let course = item##item;
     let route = {"name": course##name};
     let navigator () => navigate route;
-    <Button key=course##name title=course##name onPress=navigator />
+    <Button title=course##name onPress=navigator />
   };
+  let keyExtractor item _ => item##name;
   {
     ...component,
     render: fun _ _ =>
@@ -30,7 +31,11 @@ let make ::courses=? ::navigate _ => {
             switch courses {
             | None => <Text> (ReasonReact.stringToElement "Loading...") </Text>
             | Some courses =>
-              <FlatList data=courses renderItem=(renderName (navigateTo (navigate "details"))) />
+              <FlatList
+                data=courses
+                renderItem=(renderName (navigateTo (navigate "details")))
+                keyExtractor
+              />
             }
           )
         </View>
