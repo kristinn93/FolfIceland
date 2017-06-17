@@ -1,6 +1,6 @@
 import React from 'react';
 import {gql, graphql} from 'react-apollo';
-import {comp as CourseListRe} from '../../lib/js/src/components/courseList.js';
+import {app as CourseListRe} from '../../lib/js/src/components/courseList.js';
 
 class CourseList extends React.Component {
   static navigationOptions = {
@@ -11,8 +11,8 @@ class CourseList extends React.Component {
       <CourseListRe
         courses={
           this.props.data &&
-            this.props.data.folf &&
-            this.props.data.folf.courses
+          this.props.data.folf &&
+          this.props.data.folf.courses
         }
         navigate={(destination, route) =>
           this.props.navigation.navigate(destination, route)}
