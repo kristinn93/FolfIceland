@@ -1,16 +1,28 @@
 {
-    "name" : "FolfApp",
+    "name": "FolfApp",
     "reason": {
-        "react-jsx": true
+        "react-jsx": 2
     },
-    "bs-dependencies": ["bs-react-native", "reason-react"],
-    "sources": [{
-        "dir": "src",
-        "subdirs": [{
-            "dir": "components",
-            "subdirs": [{
-                "dir": "maps"
-            }]
-        }]
-    }]
+    "bs-dependencies": [
+        "bs-react-native",
+        "reason-react"
+    ],
+    "sources": [
+        {
+            "dir": "src",
+            "subdirs": [
+                {
+                    "dir": "components",
+                    "subdirs": [
+                        {
+                            "dir": "maps"
+                        },
+                        {
+                            "dir": "play"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }

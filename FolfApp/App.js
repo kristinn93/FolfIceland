@@ -12,7 +12,7 @@ import {StackNavigator, TabNavigator} from 'react-navigation';
 import CourseList from './src/components/courseList';
 import CourseDetails from './src/components/courseDetails';
 
-import MapView from './src/components/play/map';
+import MapView from './src/components/play/PlayMapView';
 import DirectionView from './src/components/play/direction';
 import ScoreView from './src/components/play/score';
 
@@ -28,7 +28,7 @@ const PlayingRouter = TabNavigator(
 const Router = StackNavigator({
   list: {screen: CourseList},
   details: {screen: CourseDetails, path: 'details/:name'},
-  play: {screen: PlayingRouter},
+  play: {screen: PlayingRouter, path: 'play/:name/:selectedColor'},
 });
 
 //TODO: Point the uri to the local ip address of your computer running the server
