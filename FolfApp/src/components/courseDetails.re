@@ -15,7 +15,9 @@ type course = Js.t {. name : string, city : string, par : par, location : locati
 type region =
   Js.t {. latitude : float, longitude : float, latitudeDelta : float, longitudeDelta : float};
 
-type marker = Js.t {. latitude : float, longitude : float};
+type coordinates = Js.t {. latitude : float, longitude : float};
+
+type marker = Js.t {. marker : coordinates};
 
 let make ::course=? ::loading ::openMaps ::play _ => {
   let dimensions = Dimensions.get `window;
@@ -61,12 +63,7 @@ let make ::course=? ::loading ::openMaps ::play _ => {
         }
       )
     </View>;
-  let renderMapDetails
-      (par: par)
-      (location: location)
-      (openMaps: location => unit)
-      (region: region)
-      (marker: marker) =>
+  let renderMapDetails par location openMaps region marker =>
     switch (Js.Null.to_opt par##red, Js.Null.to_opt par##white, Js.Null.to_opt par##blue) {
     | (None, None, None) => <View />
     | (Some 0, Some 0, Some 0) => <View />
@@ -108,7 +105,9 @@ let make ::course=? ::loading ::openMaps ::play _ => {
               "latitudeDelta": 0.008,
               "longitudeDelta": 0.008
             };
-            let marker = {"latitude": course##location##lat, "longitude": course##location##long};
+            let marker = {
+              "marker": {"latitude": course##location##lat, "longitude": course##location##long}
+            };
             <View>
               <View style=(Style.style [Style.flex 93.0])>
                 (renderMapDetails course##par course##location openMaps region marker)

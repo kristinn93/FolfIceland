@@ -999,7 +999,7 @@ bs-platform@^1.7.5:
 
 "bs-react-native@git+https://github.com/BuckleTypes/bs-react-native.git":
   version "0.1.0"
-  resolved "git+https://github.com/BuckleTypes/bs-react-native.git#ea86278a77e4f5ea0fd8b4d0e56f1b9f83f0417d"
+  resolved "git+https://github.com/BuckleTypes/bs-react-native.git#75bfc23cceda24fea9b4a251adfafdd55ab7b1b5"
   dependencies:
     bs-platform "^1.7.5"
     reason-react "^0.1.4"

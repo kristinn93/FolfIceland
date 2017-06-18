@@ -54,6 +54,10 @@ export default graphql(
           }
         }
       }
+      location {
+        lat
+        long
+      }
     }
   }
 }

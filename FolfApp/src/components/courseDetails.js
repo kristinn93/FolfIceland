@@ -1,7 +1,8 @@
 import React from 'react';
-import {Linking, Platform} from 'react-native';
+import {Linking, Platform, View} from 'react-native';
 import {gql, graphql} from 'react-apollo';
 import {app as CourseDetailsRe} from '../../lib/js/folfApp/src/components/courseDetails.js';
+import {Basket} from '../icons/Basket';
 
 class CourseDetail extends React.Component {
   static navigationOptions = ({navigation}) => ({

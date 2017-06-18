@@ -1351,7 +1351,7 @@ bs-platform@^1.7.5:
 
 "bs-react-native@git+https://github.com/BuckleTypes/bs-react-native.git":
   version "0.1.0"
-  resolved "git+https://github.com/BuckleTypes/bs-react-native.git#ea86278a77e4f5ea0fd8b4d0e56f1b9f83f0417d"
+  resolved "git+https://github.com/BuckleTypes/bs-react-native.git#75bfc23cceda24fea9b4a251adfafdd55ab7b1b5"
   dependencies:
     bs-platform "^1.7.5"
     reason-react "^0.1.4"
@@ -2729,8 +2729,8 @@ inquirer@^0.12.0:
     through "^2.3.6"
 
 inquirer@^3.0.1:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-3.1.0.tgz#e05400d48b94937c2d3caa7038663ba9189aab01"
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-3.1.1.tgz#87621c4fba4072f48a8dd71c9f9df6f100b2d534"
   dependencies:
     ansi-escapes "^2.0.0"
     chalk "^1.0.0"
@@ -3063,8 +3063,8 @@ jest-environment-node@^19.0.2:
     jest-util "^19.0.2"
 
 jest-expo@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/jest-expo/-/jest-expo-1.0.2.tgz#38063bd74aebea045955fcf3a49956225a97062e"
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/jest-expo/-/jest-expo-1.0.3.tgz#a4a5f61be0a9e086673a03137529ac24e4622adc"
   dependencies:
     babel-jest "^19.0.0"
     jest "^19.0.0"

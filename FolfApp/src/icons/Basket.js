@@ -1,9 +1,9 @@
 import React from 'react';
 import {Svg} from 'expo';
 
-export const Basket = () => {
+export const Basket = props => {
   return (
-    <Svg x="0px" y="0px" width="86.5px" height="86.5px" viewBox="0 0 86.5 86.5">
+    <Svg width={props.width} height={props.height} viewBox="0 0 86.5 86.5">
       <Svg.G>
         <Svg.Path d="M30.893,77.008V6.362c0.547-0.254,0.93-0.804,0.93-1.446V1.595c0-0.88-0.714-1.595-1.594-1.595h-2.657
 		c-0.881,0-1.595,0.715-1.595,1.595v3.321c0,0.643,0.382,1.192,0.93,1.446v70.646c-4.722,0.352-8.969,1.953-8.969,4.709

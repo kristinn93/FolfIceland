@@ -4,14 +4,23 @@ import {MapView} from 'expo';
 import {Basket} from '../../icons/Basket';
 
 export const MapViewWrapper = props => {
-  console.log(Basket);
   return (
-    <MapView style={props.style} region={props.region} showsUserLocation>
-      {props.markers.map(marker =>
-        <MapView.Marker coordinate={marker} key={marker.latitude}>
-          {/*{marker.basket === undefined ? <View><Basket /></View> : null}*/}
-        </MapView.Marker>
-      )}
+    <MapView
+      style={props.style}
+      region={props.region}
+      showsUserLocation
+      mapType="hybrid"
+    >
+      {props.markers.map(details => {
+        return (
+          <MapView.Marker
+            coordinate={details.marker}
+            key={details.marker.latitude}
+          >
+            {details.basket ? <Basket width={24} height={24} /> : null}
+          </MapView.Marker>
+        );
+      })}
     </MapView>
   );
 };

@@ -26,10 +26,19 @@ let make ::course=? ::loading _ => {
       Js.Undefined.to_opt basket##teePads##white,
       Js.Undefined.to_opt basket##teePads##blue
     ) {
-    | (Some red, _, _) => {"latitude": red##location##lat, "longitude": red##location##long}
-    | (_, Some white, _) => {"latitude": white##location##lat, "longitude": white##location##long}
-    | (_, _, Some blue) => {"latitude": blue##location##lat, "longitude": blue##location##long}
-    | (_, _, _) => {"latitude": 0., "longitude": 0.}
+    | (Some red, _, _) => {
+        "marker": {"latitude": red##location##lat, "longitude": red##location##long},
+        "basket": false
+      }
+    | (_, Some white, _) => {
+        "marker": {"latitude": white##location##lat, "longitude": white##location##long},
+        "basket": false
+      }
+    | (_, _, Some blue) => {
+        "marker": {"latitude": blue##location##lat, "longitude": blue##location##long},
+        "basket": false
+      }
+    | (_, _, _) => {"marker": {"latitude": 0., "longitude": 0.}, "basket": false}
     };
   let findTeePadCoordinates baskets => Array.map fetchTeePadsFromBasket baskets;
   let dimensions = Dimensions.get `window;
@@ -38,10 +47,21 @@ let make ::course=? ::loading _ => {
     render: fun _ _ =>
       switch (course, loading) {
       | (Some course, _) =>
+        Js.log course;
         let teePadCoordinates = findTeePadCoordinates course##baskets;
+        let basketCoordinates =
+          Array.map
+            (
+              fun basket => {
+                "marker": {"latitude": basket##location##lat, "longitude": basket##location##long},
+                "basket": true
+              }
+            )
+            course##baskets;
+        let markers = Array.append teePadCoordinates basketCoordinates;
         let region = {
-          let latitudes = Array.map (fun coordinate => coordinate##latitude) teePadCoordinates;
-          let longitudes = Array.map (fun coordinate => coordinate##longitude) teePadCoordinates;
+          let latitudes = Array.map (fun coordinate => coordinate##marker##latitude) markers;
+          let longitudes = Array.map (fun coordinate => coordinate##marker##longitude) markers;
           let maxLatitude = Array.fold_left max latitudes.(0) latitudes;
           let minLatitude = Array.fold_left min latitudes.(0) latitudes;
           let maxLongitude = Array.fold_left max longitudes.(0) longitudes;
@@ -65,7 +85,7 @@ let make ::course=? ::loading _ => {
               Style.width (float_of_int dimensions##width)
             ]
           )
-          markers=teePadCoordinates
+          markers
         />
       | (None, true) => <Text> (ReasonReact.stringToElement "Loading...") </Text>
       | (None, false) => <Text> (ReasonReact.stringToElement "Something terrible happened") </Text>
