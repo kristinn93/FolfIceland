@@ -1,9 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {gql, graphql} from 'react-apollo';
-import {
-  comp as PlayMapViewRe,
-} from '../../../lib/js/src/components/play/playMapView';
+import {app as PlayMapViewRe} from '../../../lib/js/src/components/play/playMapView';
 
 class PlayMapView extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -11,8 +9,7 @@ class PlayMapView extends React.Component {
   });
 
   render() {
-    console.log(this.props.navigation.state.params);
-    return <PlayMapViewRe />;
+    return <PlayMapViewRe course={this.props.data && this.props.data.course} />;
   }
 }
 
@@ -62,8 +59,8 @@ export default graphql(
       variables: {
         name: ownProps.navigation.state.params.name,
         redSelected: ownProps.navigation.state.params.selectedColor === 'red',
-        whiteSelected: ownProps.navigation.state.params.selectedColor ===
-          'white',
+        whiteSelected:
+          ownProps.navigation.state.params.selectedColor === 'white',
         blueSelected: ownProps.navigation.state.params.selectedColor === 'blue',
       },
     }),
