@@ -4,12 +4,14 @@
   "private": true,
   "devDependencies": {
     "bs-platform": "^1.7.5",
+    "concurrently": "3.4.0",
+    "copy-and-watch": "0.1.2",
     "react-native-scripts": "^0.0.31",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "scripts": {
     "reason": "bsb",
-    "reason:watch": "bsb -make-world -w"
+    "reason:watch": "concurrently 'bsb -make-world -w' 'copy-and-watch lib/ FolfApp/lib --watch'"
   },
   "dependencies": {
     "bs-react-native": "git+https://github.com/BuckleTypes/bs-react-native.git",

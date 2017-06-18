@@ -1,5 +1,5 @@
 external mapViewWrapper : ReasonReact.reactClass =
-  "MapViewWrapper" [@@bs.module "../../../../../src/components/maps/MapViewWrapper.js"];
+  "MapViewWrapper" [@@bs.module "../../../../../../src/components/maps/MapViewWrapper.js"];
 
 let make ::style=? ::region=? ::markers=? children =>
   ReasonReact.wrapJsForReason

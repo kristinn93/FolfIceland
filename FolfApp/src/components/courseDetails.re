@@ -130,7 +130,11 @@ let make ::course=? ::loading ::openMaps ::play _ => {
                     Style.borderTopColor "#EEEEEE"
                   ]
                 )>
-                <Button onPress=(fun _ => play {"name":course##name, "selectedColor": "red"}) color="#FF0000" title="Play" />
+                <Button
+                  onPress=(fun _ => play {"name": course##name, "selectedColor": "red"})
+                  color="#FF0000"
+                  title="Play"
+                />
               </View>
             </View>
           | (_, true) => <Text> (ReactRe.stringToElement "Loading...") </Text>

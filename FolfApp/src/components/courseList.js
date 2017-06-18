@@ -1,6 +1,6 @@
 import React from 'react';
 import {gql, graphql} from 'react-apollo';
-import {app as CourseListRe} from '../../lib/js/src/components/courseList.js';
+import {app as CourseListRe} from '../../lib/js/folfApp/src/components/courseList.js';
 
 class CourseList extends React.Component {
   static navigationOptions = {
