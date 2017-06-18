@@ -1,14 +1,13 @@
 import React from 'react';
 import {Linking, Platform} from 'react-native';
 import {gql, graphql} from 'react-apollo';
-import {
-  comp as CourseDetailsRe,
-} from '../../lib/js/src/components/courseDetails.js';
+import {app as CourseDetailsRe} from '../../lib/js/src/components/courseDetails.js';
 
 class CourseDetail extends React.Component {
-  static navigationOptions = {
-    title: 'Course Details',
-  };
+  static navigationOptions = ({navigation}) => ({
+    title: navigation.state.params.name,
+  });
+
   redirectToMap(location) {
     if (Platform.OS === 'ios') {
       Linking.canOpenURL(
@@ -43,6 +42,7 @@ class CourseDetail extends React.Component {
         course={this.props.data && this.props.data.course}
         loading={this.props.data && this.props.data.loading}
         openMaps={location => this.redirectToMap(location)}
+        play={route => this.props.navigation.navigate('play', route)}
       />
     );
   }

@@ -1,44 +1,48 @@
-module CourseList = {
-  include ReactNative;
-  include ReactRe.Component.JsProps;
-  let name = "CourseList";
-  type course = Js.t {. name : string};
-  type route = Js.t {. name : string};
-  type props = {courses: option (array course), navigate: string => route => unit};
-  type jsProps =
-    Js.t {. courses : Js.Null_undefined.t (array course), navigate : string => route => unit};
-  let jsPropsToReasonProps =
-    Some (
-      fun jsProps => {
-        courses: Js.Null_undefined.to_opt jsProps##courses,
-        navigate: jsProps##navigate
-      }
-    );
+open ReactNative;
+
+open ReasonReact;
+
+let component = ReasonReact.statelessComponent "CourseList";
+
+type course = Js.t {. name : string};
+
+type route = Js.t {. name : string};
+
+type props = {courses: option (array course), navigate: string => route => unit};
+
+let make ::courses=? ::navigate _ => {
   let navigateTo (navigate: route => unit) (route: route) => navigate route;
-  let renderName (navigate: route => unit) (course: course) => {
+  let renderName navigate item => {
+    let course = item##item;
     let route = {"name": course##name};
     let navigator () => navigate route;
-    <Button key=course##name title=course##name onPress=navigator />
+    <Button title=course##name onPress=navigator />
   };
-  let render {props} =>
-    <ScrollView>
-      <View
-        style=(
-                Style.style [Style.alignItems `center, Style.justifyContent `center, Style.flex 1.0]
-              )>
-        (
-          switch props.courses {
-          | None => <Text> (ReactRe.stringToElement "Loading...") </Text>
-          | Some courses =>
-            ReactRe.listToElement (
-              List.map (renderName (navigateTo (props.navigate "details"))) (Array.to_list courses)
-            )
-          }
-        )
-      </View>
-    </ScrollView>;
+  let keyExtractor item _ => item##name;
+  {
+    ...component,
+    render: fun _ _ =>
+      <ScrollView>
+        <View
+          style=(
+            Style.style [Style.alignItems `center, Style.justifyContent `center, Style.flex 1.0]
+          )>
+          (
+            switch courses {
+            | None => <Text> (ReasonReact.stringToElement "Loading...") </Text>
+            | Some courses =>
+              <FlatList
+                data=courses
+                renderItem=(renderName (navigateTo (navigate "details")))
+                keyExtractor
+              />
+            }
+          )
+        </View>
+      </ScrollView>
+  }
 };
 
-include ReactRe.CreateComponent CourseList;
-
-let createElement ::courses ::navigate => wrapProps {courses, navigate};
+let app =
+  ReasonReact.wrapReasonForJs
+    ::component (fun jsProps => make courses::jsProps##courses navigate::jsProps##navigate [||]);

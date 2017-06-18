@@ -1,7 +1,0 @@
-rootProject.name = 'FolfIceland'
-
-include ':app'
-include ':react-native-discovery'
-project(':react-native-discovery').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-discovery/android')
-include ':react-native-maps'
-project(':react-native-maps').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-maps/android')
