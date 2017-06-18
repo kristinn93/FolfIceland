@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {gql, graphql} from 'react-apollo';
-import {app as PlayMapViewRe} from '../../../lib/js/src/components/play/playMapView';
+import {app as PlayMapViewRe} from '../../../lib/js/folfApp/src/components/play/playMapView';
 
 class PlayMapView extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -25,6 +25,10 @@ export default graphql(
       red @include(if: $redSelected)
       white @include(if: $whiteSelected)
       blue @include(if: $blueSelected)
+    }
+    location {
+       lat
+       long
     }
     baskets {
       teePads {

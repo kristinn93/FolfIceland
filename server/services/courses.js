@@ -1,8 +1,162 @@
-import _ from 'lodash'
-import {Map, fromJS} from 'immutable'
-import type {Course} from '../schemas/flow/course'
+import _ from 'lodash';
+import {Map, fromJS} from 'immutable';
+import type {Course} from '../schemas/flow/course';
 
 const courses: Map<string, Course> = fromJS({
+  Klambratún: {
+    name: 'Klambratún',
+    city: 'Reykjavík',
+    location: {
+      lat: 64.138409,
+      long: -21.915763,
+    },
+    baskets: [
+      {
+        number: 1,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.1383651039229,
+              long: -21.9153169915284,
+            },
+          },
+        },
+        location: {
+          lat: 64.1379321786241,
+          long: -21.9160319678689,
+        },
+      },
+      {
+        number: 2,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.1380611761139,
+              long: -21.9163826666976,
+            },
+          },
+        },
+        location: {
+          lat: 64.1375940945597,
+          long: -21.9164402503724,
+        },
+      },
+      {
+        number: 3,
+        teePads: {
+          red: {
+            par: 4,
+            location: {
+              lat: 64.1373931803407,
+              long: -21.9164757896419,
+            },
+          },
+        },
+        location: {
+          lat: 64.1370093729944,
+          long: -21.9172190968151,
+        },
+      },
+      {
+        number: 4,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.1366753122435,
+              long: -21.9165239017661,
+            },
+          },
+        },
+        location: {
+          lat: 64.1362757888289,
+          long: -21.9164798129554,
+        },
+      },
+      {
+        number: 5,
+        teePads: {
+          red: {
+            par: 4,
+            location: {
+              lat: 64.1362662334592,
+              long: -21.915754526874,
+            },
+          },
+        },
+        location: {
+          lat: 64.1361306561754,
+          long: -21.9144232291932,
+        },
+      },
+      {
+        number: 6,
+        teePads: {
+          red: {
+            par: 5,
+            location: {
+              lat: 64.1362580191941,
+              long: -21.9129062723572,
+            },
+          },
+        },
+        location: {
+          lat: 64.1368322633804,
+          long: -21.911335671341,
+        },
+      },
+      {
+        number: 7,
+        teePads: {
+          red: {
+            par: 4,
+            location: {
+              lat: 64.1369630210699,
+              long: -21.9108883291687,
+            },
+          },
+        },
+        location: {
+          lat: 64.1369349416943,
+          long: -21.9095059018786,
+        },
+      },
+      {
+        number: 8,
+        teePads: {
+          red: {
+            par: 3,
+            location: {
+              lat: 64.1372823296712,
+              long: -21.9092913251574,
+            },
+          },
+        },
+        location: {
+          lat: 64.1370561021046,
+          long: -21.9103489536996,
+        },
+      },
+      {
+        number: 9,
+        teePads: {
+          red: {
+            par: 4,
+            location: {
+              lat: 64.1372765880675,
+              long: -21.9104863330926,
+            },
+          },
+        },
+        location: {
+          lat: 64.1375145502986,
+          long: -21.9120596163179,
+        },
+      },
+    ],
+  },
   Garðalundur: {
     name: 'Garðalundur',
     city: 'Akranes',
@@ -93,13 +247,13 @@ const courses: Map<string, Course> = fromJS({
           white: {
             par: 3,
             location: {
-              lat: 64.323450,
+              lat: 64.32345,
               long: -22.031098,
             },
           },
         },
         location: {
-          lat: 64.323540,
+          lat: 64.32354,
           long: -22.031732,
         },
       },
@@ -146,7 +300,7 @@ const courses: Map<string, Course> = fromJS({
         },
         location: {
           lat: 64.322762,
-          long: -22.032950,
+          long: -22.03295,
         },
       },
       {
@@ -191,7 +345,7 @@ const courses: Map<string, Course> = fromJS({
           },
         },
         location: {
-          lat: 64.323740,
+          lat: 64.32374,
           long: -22.032954,
         },
       },
@@ -436,167 +590,13 @@ const courses: Map<string, Course> = fromJS({
     },
     baskets: [],
   },
-  Klambratún: {
-    name: 'Klambratún',
-    city: 'Reykjavík',
-    location: {
-      lat: 64.138409,
-      long: -21.915763,
-    },
-    baskets: [
-      {
-        number: 1,
-        teePads: {
-          red: {
-            par: 3,
-            location: {
-              lat: 64.1383651039229,
-              long: -21.9153169915284,
-            },
-          },
-        },
-        location: {
-          lat: 64.1379321786241,
-          long: -21.9160319678689,
-        },
-      },
-      {
-        number: 2,
-        teePads: {
-          red: {
-            par: 3,
-            location: {
-              lat: 64.1380611761139,
-              long: -21.9163826666976,
-            },
-          },
-        },
-        location: {
-          lat: 64.1375940945597,
-          long: -21.9164402503724,
-        },
-      },
-      {
-        number: 3,
-        teePads: {
-          red: {
-            par: 4,
-            location: {
-              lat: 64.1373931803407,
-              long: -21.9164757896419,
-            },
-          },
-        },
-        location: {
-          lat: 64.1370093729944,
-          long: -21.9172190968151,
-        },
-      },
-      {
-        number: 4,
-        teePads: {
-          red: {
-            par: 3,
-            location: {
-              lat: 64.1366753122435,
-              long: -21.9165239017661,
-            },
-          },
-        },
-        location: {
-          lat: 64.1362757888289,
-          long: -21.9164798129554,
-        },
-      },
-      {
-        number: 5,
-        teePads: {
-          red: {
-            par: 4,
-            location: {
-              lat: 64.1362662334592,
-              long: -21.915754526874,
-            },
-          },
-        },
-        location: {
-          lat: 64.1361306561754,
-          long: -21.9144232291932,
-        },
-      },
-      {
-        number: 6,
-        teePads: {
-          red: {
-            par: 5,
-            location: {
-              lat: 64.1362580191941,
-              long: -21.9129062723572,
-            },
-          },
-        },
-        location: {
-          lat: 64.1368322633804,
-          long: -21.911335671341,
-        },
-      },
-      {
-        number: 7,
-        teePads: {
-          red: {
-            par: 4,
-            location: {
-              lat: 64.1369630210699,
-              long: -21.9108883291687,
-            },
-          },
-        },
-        location: {
-          lat: 64.1369349416943,
-          long: -21.9095059018786,
-        },
-      },
-      {
-        number: 8,
-        teePads: {
-          red: {
-            par: 3,
-            location: {
-              lat: 64.1372823296712,
-              long: -21.9092913251574,
-            },
-          },
-        },
-        location: {
-          lat: 64.1370561021046,
-          long: -21.9103489536996,
-        },
-      },
-      {
-        number: 9,
-        teePads: {
-          red: {
-            par: 4,
-            location: {
-              lat: 64.1372765880675,
-              long: -21.9104863330926,
-            },
-          },
-        },
-        location: {
-          lat: 64.1375145502986,
-          long: -21.9120596163179,
-        },
-      },
-    ],
-  },
-})
+});
 
 export const getCourses = (): Array<{[key: string]: Course}> => {
-  return courses.toList().sortBy((v) => v.get('city')).toJS()
-}
+  // TODO: Sort by something that makes sense, this is just to get Klambratún and Garðalundur at the top
+  return courses.toList().sortBy(v => -v.get('baskets').size).toJS();
+};
 
 export const getCourse = (course: String): Course => {
-  return courses.get(course) &&
-    courses.get(course).toJS()
-}
+  return courses.get(course) && courses.get(course).toJS();
+};
