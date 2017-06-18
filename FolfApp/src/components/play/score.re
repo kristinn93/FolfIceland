@@ -3,16 +3,18 @@ open ReactNative;
 let component = ReasonReact.statefulComponent "Score";
 
 let make ::name _children => {
-  let click () state _self => ReasonReact.Update state;
-  let updateInput number state _self => ReasonReact.Update state;
+  let updateInput number _ _ => ReasonReact.Update number;
   {
     ...component,
-    initialState: fun () => 0,
-    render: fun state self => {
-      let greeting =
-        "Hello " ^ name ^ ". You've clicked the button " ^ string_of_int state ^ " time(s)!";
-      <View> <Button onPress=(self.update click) title=greeting /> </View>
-    }
+    initialState: fun () => "1",
+    render: fun state self =>
+      <TextInput
+        style=(Style.style [Style.height 300., Style.width 300.])
+        keyboardType=`numeric
+        onChangeText=(self.update updateInput)
+        value=state
+        responderHandlers=None
+      />
   }
 };
 
