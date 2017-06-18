@@ -13,7 +13,6 @@ let make ::name _children => {
         keyboardType=`numeric
         onChangeText=(self.update updateInput)
         value=state
-        responderHandlers=None
       />
   }
 };
