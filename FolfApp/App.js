@@ -39,7 +39,10 @@ const client = new ApolloClient({
   networkInterface,
 });
 
-console.ignoredYellowBox = ['Warning: View.propTypes'];
+console.ignoredYellowBox = [
+  'Warning: View.propTypes',
+  'Warning: Accessing PropTypes',
+];
 
 export default class App extends React.Component {
   render() {
