@@ -6,7 +6,7 @@ let make ::name _children => {
   let updateInput number _ _ => ReasonReact.Update number;
   {
     ...component,
-    initialState: fun () => "1",
+    initialState: fun () => "",
     render: fun state self =>
       <TextInput
         style=(Style.style [Style.height 300., Style.width 300.])
